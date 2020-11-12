@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// 前台域名分组
+Route::domain('www.yqc.ink')->group(function(){
+
+});
+// 后台域名分组
+Route::domain('admin.yqc.ink')->group(function(){
+
 });
