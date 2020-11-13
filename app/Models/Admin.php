@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Model
 {
-    protected $table='admin';
-	protected $primaryKey='admin_id';
-	public $timestamps=false;
-	protected $guaarded=[];
+	// 声明表名
+    protected $table = "admin";
+    // 声明主键 
+    protected $primaryKey = "admin_id";
+    // 时间戳管理
+    public $timestamps = false;
+    // 黑名单
+    protected $guarded = [];
 }

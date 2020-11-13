@@ -10,11 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 class AdministratorController extends Controller
 {
-    //登录
-    public function AdminLogin()
-    {
-        return view('admin.AdminLogin');
-    }
     //管理员
     public function Adminuser(){
         return view('admin\RBAC\Adminuser');

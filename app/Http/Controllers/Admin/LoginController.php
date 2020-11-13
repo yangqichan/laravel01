@@ -18,12 +18,15 @@ class LoginController extends Controller
         // 接值
         $data = $request->except('_token');
         $res = Admin::where('admin_account',$data['usernem'])->get();
-        // 验证密码        // 文本        // 哈希密码
-        if (Hash::check($data['pwd'], $res->admin_pwd)) {
-            // 验证通过重定向
-            return redirect('/login');
+        if(!$res){
+            // 验证密码        // 文本        // 哈希密码
+            if (Hash::check($data['pwd'], $res->admin_pwd)) {
+                session(['admin'=>$res]);
+                // 验证通过重定向
+                return redirect('/');
+            }
         }
         // 验证失败重定向
-        return redirect('/login');
+        return redirect('/login')->with('error','用户名或密码错误');
     }
 }

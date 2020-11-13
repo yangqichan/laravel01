@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
-    protected $table='menu';
-	protected $primaryKey='menu_id';
-	public $timestamps=false;
-	protected $guaarded=[];
+	// 声明表名
+    protected $table = "menu";
+    // 声明主键 
+    protected $primaryKey = "menu_id";
+    // 时间戳管理
+    public $timestamps = false;
+    // 黑名单
+    protected $guarded = [];
 }
