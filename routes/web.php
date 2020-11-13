@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\OperateController;
+use App\Http\Controllers\Admin\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,8 @@ Route::domain('laravel01.yqc.ink')->group(function(){
 // 后台域名分组
 Route::domain('admin.yqc.ink')->group(function(){
     Route::view('/', 'admin.adminmain.index');
+    Route::any('/login', [LoginController::class, 'login']);
+    Route::any('/logindo', [LoginController::class, 'logindo']);
     // 运营模块
     Route::prefix('operate')->group(function(){
         Route::any('/',[OperateController::class , 'operate'])->name('operate');
