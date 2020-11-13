@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{ENV:REDIRECT_STATUS} ^$ 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+<<<<<<< HEAD
+</IfModule>
+=======
+</IfModule>
+>>>>>>> 1423c46d3b0b517644522d2450a040a62f58f6fc

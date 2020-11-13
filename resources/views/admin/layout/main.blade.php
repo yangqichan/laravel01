@@ -72,6 +72,10 @@
         <script src="/adminlte/dist/js/exporting.js"></script>
         <script src="/adminlte/dist/js/highcharts-zh_CN.js"></script>
         <script src="/adminlte/dist/js/highcharts-3d.js"></script>
+        <link rel="stylesheet" type="text/css" href="/adminlte/dist/error/dialog.css">
+        <script src="/adminlte/dist/error/zepto.min.js"></script>
+        <script type="text/javascript" src="/adminlte/dist/error/dialog.min.js"></script>
+        <script type="text/javascript" src="/adminlte/dist/error/jquery.min.js"></script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">

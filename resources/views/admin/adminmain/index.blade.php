@@ -1,6 +1,4 @@
-@extends('admin.layout.main') 
-@section('title','后台首页') 
-@section('content')
+@extends('admin.layout.main') @section('title','后台首页') @section('content')
 <!-- 后台首页 -->
     <!-- Content Header (Page header) -->
     <section class="content-header">
