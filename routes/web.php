@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // 前台域名分组
-Route::domain('www.yqc.ink')->group(function(){
+Route::domain('laravel01.yqc.ink')->group(function(){
 
 });
 // 后台域名分组
