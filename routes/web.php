@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+//后台模块
+
+
+//前台模块
+
+
+
+//商家模块
