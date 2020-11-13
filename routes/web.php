@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\Couponcontroller;  //优惠模块
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,4 +20,15 @@ Route::domain('laravel01.yqc.ink')->group(function(){
 // 后台域名分组
 Route::domain('admin.yqc.ink')->group(function(){
     Route::view('/', 'admin.layout.main');
+
+    //优惠模块
+    Route::prefix('coupon')->group(function(){
+    	Route::any('create', [Couponcontroller::class, 'create'])->name('coupon.create');  //优惠添加
+    	Route::any('/', [Couponcontroller::class, 'index'])->name('coupon.index');         //优惠展示
+    	Route::any('del', [Couponcontroller::class, 'destroy'])->name('coupon.del');       //优惠删除
+    	Route::any('update', [Couponcontroller::class, 'update'])->name('coupon.update');  //优惠修改
+    });
+    	
+  
+    
 });
