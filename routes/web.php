@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BrandController;
 
+use App\Http\Controllers\Admin\OperateController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,16 +16,20 @@ use App\Http\Controllers\Admin\BrandController;
 */
 
 // 前台域名分组
-Route::domain('www.yqc.ink')->group(function(){
-
+Route::domain('laravel01.yqc.ink')->group(function(){
+    
 });
 // 后台域名分组
 Route::domain('admin.yqc.ink')->group(function(){
-    Route::view('/admin', 'admin.layout.main');
     //品牌
     Route::prefix('brand')->namespace('Admin')->group(function(){
         Route::get('/create',[BrandController::class, 'create']);
         Route::get('store',[BrandController::class, 'store']);
     });
     
+    Route::view('/', 'admin.adminmain.index');
+    // 运营模块
+    Route::prefix('operate')->group(function(){
+        Route::any('/',[OperateController::class , 'operate'])->name('operate');
+    });
 });
