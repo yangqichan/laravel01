@@ -28,7 +28,4 @@ Route::domain('admin.yqc.ink')->group(function(){
     	Route::any('del', [Couponcontroller::class, 'destroy'])->name('coupon.del');       //优惠删除
     	Route::any('update', [Couponcontroller::class, 'update'])->name('coupon.update');  //优惠修改
     });
-    	
-  
-    
 });
