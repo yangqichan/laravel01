@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,11 @@ Route::domain('www.yqc.ink')->group(function(){
 });
 // 后台域名分组
 Route::domain('admin.yqc.ink')->group(function(){
-    Route::view('/', 'admin.layout.main');
+    Route::view('/admin', 'admin.layout.main');
+    //品牌
+    Route::prefix('brand')->namespace('Admin')->group(function(){
+        Route::get('/create',[BrandController::class, 'create']);
+        Route::get('store',[BrandController::class, 'store']);
+    });
+    
 });
