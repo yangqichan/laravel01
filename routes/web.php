@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\Couponcontroller;  //优惠模块
+use App\Http\Controllers\Admin\OperateController; //运营模块
 
-use App\Http\Controllers\Admin\OperateController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,17 +18,24 @@ use App\Http\Controllers\Admin\OperateController;
 
 // 前台域名分组
 Route::domain('laravel01.yqc.ink')->group(function(){
-    
+
 });
 // 后台域名分组
 Route::domain('admin.yqc.ink')->group(function(){
+
     //品牌
     Route::prefix('brand')->namespace('Admin')->group(function(){
         Route::get('/create',[BrandController::class, 'create']);
         Route::get('store',[BrandController::class, 'store']);
     });
-    
     Route::view('/', 'admin.adminmain.index');
+    //优惠模块
+    Route::prefix('coupon')->group(function(){
+    	Route::any('create', [Couponcontroller::class, 'create'])->name('coupon.create');  //优惠添加
+    	Route::any('/', [Couponcontroller::class, 'index'])->name('coupon.index');         //优惠展示
+    	Route::any('del', [Couponcontroller::class, 'destroy'])->name('coupon.del');       //优惠删除
+    	Route::any('update', [Couponcontroller::class, 'update'])->name('coupon.update');  //优惠修改
+	});
     // 运营模块
     Route::prefix('operate')->group(function(){
         Route::any('/',[OperateController::class , 'operate'])->name('operate');
