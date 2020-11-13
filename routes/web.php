@@ -19,5 +19,5 @@ Route::domain('www.yqc.ink')->group(function(){
 });
 // 后台域名分组
 Route::domain('admin.yqc.ink')->group(function(){
-
+    Route::view('/', 'admin.index');
 });
