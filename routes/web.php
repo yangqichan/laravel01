@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AdministratorController;
+use App\Http\Controllers\Admin\AdministratorController;//RBAC
 
 use App\Http\Controllers\Admin\Couponcontroller;  //优惠模块
 
@@ -20,15 +20,10 @@ use App\Http\Controllers\Admin\OperateController; //运营模块
 
 // 前台域名分组
 Route::domain('laravel01.yqc.ink')->group(function(){
-<<<<<<< HEAD
     Route::view('/', 'admin.adminmain.index');
-=======
-
->>>>>>> 1423c46d3b0b517644522d2450a040a62f58f6fc
 });
-
+//后台模块
 Route::domain('admin.yqc.ink')->group(function(){
-<<<<<<< HEAD
 	//后台首页
     Route::view('/', 'admin.adminmain.index');
     //RBAC 后台管理员
@@ -51,7 +46,6 @@ Route::domain('admin.yqc.ink')->group(function(){
     Route::get('/admin/ListAdminmenu',[AdministratorController::class,'ListAdminmenu']);
 });
 
-=======
 
     Route::view('/', 'admin.layout.main');
 
@@ -67,4 +61,10 @@ Route::domain('admin.yqc.ink')->group(function(){
         Route::any('/',[OperateController::class , 'operate'])->name('operate');
     });
 });
->>>>>>> 1423c46d3b0b517644522d2450a040a62f58f6fc
+
+
+//前台模块
+
+
+
+//商家模块
