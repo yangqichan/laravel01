@@ -12,23 +12,22 @@
 <body>
     <!-- particles.js container -->
     <div id="particles-js" style="display: flex;align-items: center;justify-content: center">
-
-        <canvas class="particles-js-canvas-el" width="1920" height="369" style="width: 100%; height: 100%;"></canvas>
+        <canvas class="particles-js-canvas-el" width="1920" height="369" style="width: 100%; height: 100%;">
+        </canvas>
     </div>
-    <div class="apTitle">大数据智慧运营管理中心</div>
-    <div class="logcon">
+    <div class="apTitle">
         <form action="/logindo" method="post">
             @csrf
-                    <div class="line"><span>账号:</span>
-                    <input class="bt_input" type="text" name="usernem"  placeholder="账号"></div>
-                    <div class="line"><span>密码:</span>
-                    <input class="bt_input" type="password" name="pwd"  placeholder="密码"></div>
-                    <div class="line"><span>&nbsp;&nbsp;</span>
-                    <input type="submit" value="登录" class="logingBut"></div>
+                <div class="line"><span>&nbsp;&nbsp;&nbsp;</span>
+                <input class="bt_input" type="text" name="usernem"  placeholder="账号"></div>
+                <div class="line"><span>&nbsp;&nbsp;&nbsp;</span>
+                <input class="bt_input" type="password" name="pwd"  placeholder="密码"></div>
+                <div style="margin-top:20px"><span></span>
+                <input type="submit" value="登录" class="logingBut"></div>
         </form>
     </div>
-
-
+    <div class="logcon">
+    </div>
     <!-- scripts -->
     <script src="/adminlte/dist/js/login.js"></script>
     <script src="/adminlte/dist/js/loginApp.js"></script>
