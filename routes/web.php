@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\Admin\Couponcontroller;  //优惠模块
-
-use App\Http\Controllers\Admin\OperateController; //运营模块
+use App\Http\Controllers\Admin\OperateController;       // 后台运营
+use App\Http\Controllers\Admin\LoginController;         // 登录
+use App\Http\Controllers\Admin\AdministratorController; // RBAC
+use App\Http\Controllers\Admin\Couponcontroller;        // 优惠模块
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +19,11 @@ use App\Http\Controllers\Admin\OperateController; //运营模块
 
 // 前台域名分组
 Route::domain('laravel01.yqc.ink')->group(function(){
-
+    Route::view('/', 'admin.adminmain.index');
 });
-// 后台域名分组
+//后台模块
 Route::domain('admin.yqc.ink')->group(function(){
+
 
     Route::view('/', 'admin.adminmain.index');
 
@@ -33,7 +34,30 @@ Route::domain('admin.yqc.ink')->group(function(){
     	Route::any('/', [Couponcontroller::class, 'index'])->name('coupon.index');         //优惠展示
     	Route::any('del', [Couponcontroller::class, 'destroy'])->name('coupon.del');       //优惠删除
     	Route::any('update', [Couponcontroller::class, 'update'])->name('coupon.update');  //优惠修改
-	});
+    });
+	//后台首页
+    Route::any('/login', [LoginController::class, 'login']);
+    Route::any('/logindo', [LoginController::class, 'logindo']);
+    Route::prefix('admin')->group(function(){
+        // RBAC 后台管理员
+        Route::get('/Adminuser',[AdministratorController::class,'Adminuser']);
+        // RBAC 后台管理员添加
+        Route::post('/InsertAdminuser',[AdministratorController::class,'InsertAdminuser']);
+        // RBAC 后台管理员列表
+        Route::get('/ListAdminuser',[AdministratorController::class,'ListAdminuser']);
+        // RBAC 后台角色
+        Route::get('/Adminrole',[AdministratorController::class,'Adminrole']);
+        // RBAC 后台角色添加
+        Route::post('/InsertAdminrole',[AdministratorController::class,'InsertAdminrole']);
+        // RBAC 后台角色列表
+        Route::get('/ListAdminrole',[AdministratorController::class,'ListAdminrole']);
+        // RBAC 后台权限
+        Route::get('/Adminmenu',[AdministratorController::class,'Adminmenu']);
+        // RBAC 后台权限添加
+        Route::post('/InsertAdminmenu',[AdministratorController::class,'InsertAdminmenu']);
+        // RBAC 后台权限列表
+        Route::get('/ListAdminmenu',[AdministratorController::class,'ListAdminmenu']);
+    });
 
     // 运营模块
     Route::prefix('operate')->group(function(){

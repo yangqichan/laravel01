@@ -72,7 +72,18 @@
             rel="stylesheet"
             href="/adminlte/bower_components/bootstrap/dist/css/fonts.css"
         />
+
     <link rel="stylesheet" href="/adminlte/dist/js/jHsDate.css">
+
+
+        <script src="/adminlte/dist/js/highcharts.js"></script>
+        <script src="/adminlte/dist/js/exporting.js"></script>
+        <script src="/adminlte/dist/js/highcharts-zh_CN.js"></script>
+        <script src="/adminlte/dist/js/highcharts-3d.js"></script>
+        <link rel="stylesheet" type="text/css" href="/adminlte/dist/error/dialog.css">
+        <script src="/adminlte/dist/error/zepto.min.js"></script>
+        <script type="text/javascript" src="/adminlte/dist/error/dialog.min.js"></script>
+        <script type="text/javascript" src="/adminlte/dist/error/jquery.min.js"></script>
 
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -80,7 +91,9 @@
             <!-- 头部 -->
             @includeIf('admin.layout.top')
             <!-- 猪蹄 -->
+            <div class="content-wrapper" style="min-height: 976px;">
             @yield('content')
+            </div>
             <!-- 底部 -->
             @includeIf('admin.layout.next')
             <!-- /.content-wrapper -->
