@@ -136,7 +136,6 @@
                 <div id="donut-chart" style="height: 400px">
                     <!-- 内容 -->
                     <div id="container4" style="min-width:400px;height:400px"></div>
-                    
                 </div>
             </div>
             <!-- /.box-body-->
@@ -144,6 +143,7 @@
         <!-- /.box -->
     </div>
 </div>
+<!-- <script type="text/javascript" src="/adminlte/dist/error/jquery.min.js"></script> -->
 <script>
 // 年数据图表
 var chart = Highcharts.chart('container', {

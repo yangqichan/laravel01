@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>后台- @yield('title')</title>
         <!-- Tell the browser to be responsive to screen width -->
+        <link rel="icon" href="/indexyh/images/favicon.ico">
         <meta
             content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
             name="viewport"
@@ -68,6 +69,9 @@
             rel="stylesheet"
             href="/adminlte/bower_components/bootstrap/dist/css/fonts.css"
         />
+        <link rel="stylesheet" type="text/css" href="/adminlte/dist/error/dialog.css">
+        <script src="/adminlte/dist/error/zepto.min.js"></script>
+        <script type="text/javascript" src="/adminlte/dist/error/dialog.min.js"></script>
         <script src="/adminlte/dist/js/highcharts.js"></script>
         <script src="/adminlte/dist/js/exporting.js"></script>
         <script src="/adminlte/dist/js/highcharts-zh_CN.js"></script>
@@ -75,7 +79,7 @@
         <link rel="stylesheet" type="text/css" href="/adminlte/dist/error/dialog.css">
         <script src="/adminlte/dist/error/zepto.min.js"></script>
         <script type="text/javascript" src="/adminlte/dist/error/dialog.min.js"></script>
-        <!-- <script type="text/javascript" src="/adminlte/dist/error/jquery.min.js"></script> -->
+        <script type="text/javascript" src="/adminlte/dist/error/jquery.min.js"></script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
