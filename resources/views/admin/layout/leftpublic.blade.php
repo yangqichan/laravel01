@@ -80,14 +80,25 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="pages/widgets.html">
-                    <i class="fa fa-th"></i> <span>优惠管理</span>
+
+             <li class="treeview">
+                <a>
+                    <i class="fa fa-pie-chart"></i>
+                    <span>优惠管理</span>
                     <span class="pull-right-container">
-                        <small class="label pull-right bg-green">new</small>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/coupon"><i class="fa fa-circle-o"></i>优惠列表</a>
+                    </li>
+                    <li>
+                        <a href="/coupon/create"><i class="fa fa-circle-o"></i>优惠添加</a>
+                    </li>
+                </ul>
             </li>
+
             <li class="treeview">
                 <a>
                     <i class="fa fa-pie-chart"></i>
@@ -109,6 +120,7 @@
                     </li>
                 </ul>
             </li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-laptop"></i>
@@ -177,7 +189,7 @@
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-table"></i> <span>Tables</span>
+                    <i class="fa fa-table"></i> <span>广告管理</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -185,12 +197,12 @@
                 <ul class="treeview-menu">
                     <li>
                         <a href="pages/tables/simple.html"
-                            ><i class="fa fa-circle-o"></i> Simple tables</a
+                            ><i class="fa fa-circle-o"></i>广告添加</a
                         >
                     </li>
                     <li>
                         <a href="pages/tables/data.html"
-                            ><i class="fa fa-circle-o"></i> Data tables</a
+                            ><i class="fa fa-circle-o"></i>广告列表</a
                         >
                     </li>
                 </ul>

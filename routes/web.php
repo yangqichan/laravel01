@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\OperateController;       // 后台运营
 use App\Http\Controllers\Admin\LoginController;         // 登录
 use App\Http\Controllers\Admin\AdministratorController; // RBAC
 use App\Http\Controllers\Admin\Couponcontroller;        // 优惠模块
+use App\Http\Controllers\Admin\AdController;            //广告模块
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,7 @@ Route::domain('admin.yqc.ink')->group(function(){
             // RBAC 后台权限列表
             Route::get('/ListAdminmenu',[AdministratorController::class,'ListAdminmenu']);
         });
+
         //优惠模块
         Route::prefix('coupon')->group(function(){
         Route::any('create', [Couponcontroller::class, 'create'])->name('coupon.create');  //优惠添加
@@ -68,8 +70,16 @@ Route::domain('admin.yqc.ink')->group(function(){
             Route::any('/',[OperateController::class , 'operate'])->name('operate');
         });
 
+
+        //广告模块
+        Route::prefix('ad')->group(function(){
+            Route::any('/',[OperateController::class , 'index'])->name('ad');
+            Route::any('create',[OperateController::class , 'create'])->name('ad.create');
+            Route::any('store',[OperateController::class , 'store'])->name('ad.store');
+            Route::any('del',[OperateController::class, 'destroy'])->name('ad.del');
+            Route::any('edit/{id}',[OperateController::class, 'edit'])->name('ad.edit');
+            Route::any('update/{id}',[OperateController::class , 'update'])->name('ad.update');
+        });
     });
-
-
 });
 
