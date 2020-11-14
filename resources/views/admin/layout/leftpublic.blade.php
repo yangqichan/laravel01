@@ -48,30 +48,17 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-files-o"></i>
-                    <span>Layout Options</span>
-                    <span class="pull-right-container">
-                        <span class="label label-primary pull-right">4</span>
-                    </span>
+                    <span>商品品牌</span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="pages/layout/top-nav.html"
-                            ><i class="fa fa-circle-o"></i> Top Navigation</a
+                        <a href="/brand/create"
+                            ><i class="fa fa-circle-o"></i> 添加品牌</a
                         >
                     </li>
                     <li>
-                        <a href="pages/layout/boxed.html"
-                            ><i class="fa fa-circle-o"></i> Boxed</a
-                        >
-                    </li>
-                    <li>
-                        <a href="pages/layout/fixed.html"
-                            ><i class="fa fa-circle-o"></i> Fixed</a
-                        >
-                    </li>
-                    <li>
-                        <a href="pages/layout/collapsed-sidebar.html"
-                            ><i class="fa fa-circle-o"></i> Collapsed Sidebar</a
+                        <a href="/brand/index"
+                            ><i class="fa fa-circle-o"></i> 品牌列表</a
                         >
                     </li>
                 </ul>

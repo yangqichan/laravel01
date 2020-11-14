@@ -74,7 +74,7 @@
             <!-- 头部 -->
             @includeIf('admin.layout.top')
             <!-- 猪蹄 -->
-            @yield('content')
+            <div class="content-wrapper">@yield('content')</div>
             <!-- 底部 -->
             @includeIf('admin.layout.next')
             <!-- /.content-wrapper -->
