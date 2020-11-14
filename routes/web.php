@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\Couponcontroller;        // 优惠模块
 Route::domain('laravel01.yqc.ink')->group(function(){
     Route::view('/', 'index.indexmain.index');                        // 前台首页
     Route::view('/login', 'index.rl.login');                          // 前台登录
-    Route::view('/reg', 'index.indexmain.index');                     // 前台注册
+    Route::view('/reg', 'index.rl.reg');                     // 前台注册
 });
 //后台模块
 Route::domain('admin.yqc.ink')->group(function(){
@@ -50,18 +50,18 @@ Route::domain('admin.yqc.ink')->group(function(){
             Route::post('/InsertAdminmenu',[AdministratorController::class,'InsertAdminmenu']);
             // RBAC 后台权限列表
             Route::get('/ListAdminmenu',[AdministratorController::class,'ListAdminmenu']);
-        });
-        // 优惠模块
-        Route::prefix('coupon')->group(function(){
-            Route::any('create', [Couponcontroller::class, 'create'])->name('coupon.create');  //优惠添加
-            Route::any('store', [Couponcontroller::class, 'store'])->name('coupon.store');  //优惠执行添加
-            Route::any('/', [Couponcontroller::class, 'index'])->name('coupon.index');         //优惠展示
-            Route::any('del', [Couponcontroller::class, 'destroy'])->name('coupon.del');       //优惠删除
-            Route::any('update', [Couponcontroller::class, 'update'])->name('coupon.update');  //优惠修改
-        });
-        // 运营模块
-        Route::prefix('operate')->group(function(){
-            Route::any('/',[OperateController::class , 'operate'])->name('operate');
+            // 优惠模块
+            Route::prefix('coupon')->group(function(){
+                Route::any('create', [Couponcontroller::class, 'create'])->name('coupon.create');  //优惠添加
+                Route::any('store', [Couponcontroller::class, 'store'])->name('coupon.store');  //优惠执行添加
+                Route::any('/', [Couponcontroller::class, 'index'])->name('coupon.index');         //优惠展示
+                Route::any('del', [Couponcontroller::class, 'destroy'])->name('coupon.del');       //优惠删除
+                Route::any('update', [Couponcontroller::class, 'update'])->name('coupon.update');  //优惠修改
+            });
+            // 运营模块
+            Route::prefix('operate')->group(function(){
+                Route::any('/',[OperateController::class , 'operate'])->name('operate');
+            });
         });
     });
 
