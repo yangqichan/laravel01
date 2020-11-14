@@ -144,6 +144,7 @@
         <!-- /.box -->
     </div>
 </div>
+<!-- <script type="text/javascript" src="/adminlte/dist/error/jquery.min.js"></script> -->
 <script>
 // 年数据图表
 var chart = Highcharts.chart('container', {
