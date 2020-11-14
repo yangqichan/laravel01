@@ -19,7 +19,9 @@ use App\Http\Controllers\Admin\Couponcontroller;        // 优惠模块
 
 // 前台域名分组
 Route::domain('laravel01.yqc.ink')->group(function(){
-    Route::view('/', 'admin.adminmain.index');
+    Route::view('/', 'index.indexmain.index');                        // 前台首页
+    Route::view('/login', 'index.rl.login');                          // 前台登录
+    Route::view('/reg', 'index.indexmain.index');                     // 前台注册
 });
 //后台模块
 Route::domain('admin.yqc.ink')->group(function(){
