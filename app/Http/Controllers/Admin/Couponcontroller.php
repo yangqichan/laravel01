@@ -14,7 +14,7 @@ class Couponcontroller extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +35,9 @@ class Couponcontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post=request()->except('_token');
+        
+        dd($post);
     }
 
     /**

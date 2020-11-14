@@ -11,7 +11,11 @@
                 />
             </div>
             <div class="pull-left info">
-                <p>大狗一号</p>
+                <p>
+                @if(!empty(session('admin')))
+                    {{session('admin')->admin_account}}
+                @endif
+                </p>
                 <a href="#"><i class="fa fa-circle text-success"></i> 线上</a>
             </div>
         </div>
@@ -40,10 +44,10 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">主要导航</li>
-            <li class="active treeview">
-                <a href="/">
-                    <i class="fa fa-dashboard"></i> <span>首页</span>
-                </a>
+            <li>
+                <a href="/"
+                    ><i class="fa fa-dashboard"></i> <span>首页</span></a
+                >
             </li>
             <li class="treeview">
                 <a href="#">
@@ -65,7 +69,7 @@
             </li>
             <li>
                 <a href="pages/widgets.html">
-                    <i class="fa fa-th"></i> <span>Widgets</span>
+                    <i class="fa fa-th"></i> <span>优惠管理</span>
                     <span class="pull-right-container">
                         <small class="label pull-right bg-green">new</small>
                     </span>
@@ -74,30 +78,20 @@
             <li class="treeview">
                 <a>
                     <i class="fa fa-pie-chart"></i>
-                    <span>商家后台统计模块</span>
+                    <span>后台统计模块</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href=""
-                            ><i class="fa fa-circle-o"></i> 年数据</a
+                        <a href="/operate"
+                            ><i class="fa fa-circle-o"></i> 年,月,周,日数据</a
                         >
                     </li>
                     <li>
                         <a href=""
-                            ><i class="fa fa-circle-o"></i> 月数据</a
-                        >
-                    </li>
-                    <li>
-                        <a href=""
-                            ><i class="fa fa-circle-o"></i> 周数据</a
-                        >
-                    </li>
-                    <li>
-                        <a href=""
-                            ><i class="fa fa-circle-o"></i> 自定义统计</a
+                            ><i class="fa fa-circle-o"></i> 自定义查询</a
                         >
                     </li>
                 </ul>
