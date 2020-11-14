@@ -18,13 +18,13 @@
                     <div class="box-body">
                     </div>
                     <div class="box-footer clearfix">
-						<form class="form-horizontal" role="form" method="post" action="{{'store'}}">
+						<form class="form-horizontal" role="form" method="post" action="{{'/coupon/update/'.$data->coupon_id}}">
 							@csrf
 							<div class="form-group">
 								<label for="firstname" class="col-sm-2 control-label">优惠名称</label>
 								<div class="input-group col-sm-9">
 									<input type="text" class="form-control" id="firstname" 
-										   placeholder="请输入优惠名称" name="coupon_name">
+										   placeholder="请输入优惠名称" name="coupon_name" value="{{$data->coupon_name}}">
 								</div>
 							</div>
 							
@@ -32,7 +32,7 @@
                                 <label for="firstname" class="col-sm-2 control-label">开始时间</label>
                                 <!--指定 date标记-->
                                <div class='input-group date col-sm-9' id='datetimepicker1'>
-                                    <input type="text" class="form-control" name="start_time">
+                                    <input type="text" class="form-control" name="start_time" value="{{date('Y-m-d',$data->start_time)}}">
                                     	<span class="input-group-addon">
                                        		<span class="glyphicon glyphicon-calendar"></span>
                                     	</span>
@@ -44,7 +44,7 @@
                                 <label for="firstname" class="col-sm-2 control-label">结束时间</label>
                                 <!--指定 date标记-->
                                 <div class='input-group date col-sm-9' id='datetimepicker2'>
-                                    <input type="text" class="form-control" name="end_time">
+                                    <input type="text" class="form-control" name="end_time" value="{{date('Y-m-d',$data->end_time)}}">
                                     	<span class="input-group-addon">
                                        		<span class="glyphicon glyphicon-calendar"></span>
                                     	</span>
@@ -67,7 +67,7 @@
                                 <label for="firstname" class="col-sm-2 control-label">优惠金额</label>
                                 <div class="input-group col-sm-9">
                                     <input type="text" class="form-control" id="firstname" 
-                                           placeholder="请输入优惠金额" name="coupon_price">
+                                           placeholder="请输入优惠金额" name="coupon_price" value="{{$data->coupon_price}}">
                                 </div>
                             </div>
 
@@ -88,7 +88,7 @@
 	                            class="pull-right btn btn-default"
 	                            id="sendEmail"
 	                        >
-	                            添加 <i class="fa fa-arrow-circle-right"></i>
+	                            修改 <i class="fa fa-arrow-circle-right"></i>
 	                        </button>
                         </form>
                     </div>

@@ -32,8 +32,9 @@ Route::domain('admin.yqc.ink')->group(function(){
     	Route::any('create', [Couponcontroller::class, 'create'])->name('coupon.create');  //优惠添加
     	Route::any('store', [Couponcontroller::class, 'store'])->name('coupon.store');  //优惠执行添加
     	Route::any('/', [Couponcontroller::class, 'index'])->name('coupon.index');         //优惠展示
-    	Route::any('del', [Couponcontroller::class, 'destroy'])->name('coupon.del');       //优惠删除
-    	Route::any('update', [Couponcontroller::class, 'update'])->name('coupon.update');  //优惠修改
+    	Route::any('del/{id}', [Couponcontroller::class, 'destroy'])->name('coupon.del');       //优惠删除
+        Route::any('edit/{id}', [Couponcontroller::class, 'edit'])->name('coupon.edit');  //优惠修改
+    	Route::any('update/{id}', [Couponcontroller::class, 'update'])->name('coupon.update');  //优惠修改
     });
 	//后台首页
     Route::any('/login', [LoginController::class, 'login']);
@@ -63,6 +64,7 @@ Route::domain('admin.yqc.ink')->group(function(){
     Route::prefix('operate')->group(function(){
         Route::any('/',[OperateController::class , 'operate'])->name('operate');
     });
+
 
 });
 
