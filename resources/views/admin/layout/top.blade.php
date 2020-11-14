@@ -315,7 +315,9 @@
                             class="user-image"
                             alt="User Image"
                         />
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs">@if(!empty(session('admin')))
+                            {{session('admin')->admin_account}}
+                        @endif</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -327,8 +329,10 @@
                             />
 
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                @if(!empty(session('admin')))
+                                    {{session('admin')->admin_account}} - 超级管理
+                                @endif
+                                <small>自 2012 加入</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
@@ -350,12 +354,12 @@
                         <li class="user-footer">
                             <div class="pull-left">
                                 <a href="#" class="btn btn-default btn-flat"
-                                    >Profile</a
+                                    >个人资料</a
                                 >
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat"
-                                    >Sign out</a
+                                <a href="/unlogin" class="btn btn-default btn-flat"
+                                    >退出</a
                                 >
                             </div>
                         </li>

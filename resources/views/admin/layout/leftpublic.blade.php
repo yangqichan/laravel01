@@ -11,7 +11,11 @@
                 />
             </div>
             <div class="pull-left info">
-                <p>大狗一号</p>
+                <p>
+                @if(!empty(session('admin')))
+                    {{session('admin')->admin_account}}
+                @endif
+                </p>
                 <a href="#"><i class="fa fa-circle text-success"></i> 线上</a>
             </div>
         </div>
