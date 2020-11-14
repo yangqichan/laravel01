@@ -47,7 +47,6 @@ Route::domain('admin.yqc.ink')->group(function(){
 });
 
 
-    Route::view('/', 'admin.layout.main');
 
     //优惠模块
     Route::prefix('coupon')->group(function(){
