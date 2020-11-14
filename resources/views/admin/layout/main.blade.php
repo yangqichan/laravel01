@@ -57,6 +57,10 @@
             rel="stylesheet"
             href="/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"
         />
+
+
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -68,6 +72,8 @@
             rel="stylesheet"
             href="/adminlte/bower_components/bootstrap/dist/css/fonts.css"
         />
+    <link rel="stylesheet" href="/adminlte/dist/js/jHsDate.css">
+
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -122,5 +128,9 @@
         <script src="/adminlte/dist/js/pages/dashboard.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="/adminlte/dist/js/demo.js"></script>
+        
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     </body>
 </html>
