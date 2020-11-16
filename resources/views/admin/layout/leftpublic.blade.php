@@ -53,6 +53,9 @@
                 <a href="#">
                     <i class="fa fa-files-o"></i>
                     <span>商品品牌</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
@@ -111,40 +114,40 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-laptop"></i>
-                    <span>UI Elements</span>
+                    <span>管理员管理</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="pages/UI/general.html"
-                            ><i class="fa fa-circle-o"></i> General</a
+                        <a href="/admin/Adminuser"
+                            ><i class="fa fa-circle-o"></i> 管理员添加</a
                         >
                     </li>
                     <li>
-                        <a href="pages/UI/icons.html"
-                            ><i class="fa fa-circle-o"></i> Icons</a
+                        <a href="/admin/ListAdminuser"
+                            ><i class="fa fa-circle-o"></i> 管理员列表</a
                         >
                     </li>
                     <li>
-                        <a href="pages/UI/buttons.html"
-                            ><i class="fa fa-circle-o"></i> Buttons</a
+                        <a href="/admin/Adminrole"
+                            ><i class="fa fa-circle-o"></i> 角色添加</a
                         >
                     </li>
                     <li>
-                        <a href="pages/UI/sliders.html"
-                            ><i class="fa fa-circle-o"></i> Sliders</a
+                        <a href="/admin/ListAdminrole"
+                            ><i class="fa fa-circle-o"></i> 角色列表</a
                         >
                     </li>
                     <li>
-                        <a href="pages/UI/timeline.html"
-                            ><i class="fa fa-circle-o"></i> Timeline</a
+                        <a href="/admin/Adminmenu"
+                            ><i class="fa fa-circle-o"></i> 菜单添加</a
                         >
                     </li>
                     <li>
-                        <a href="pages/UI/modals.html"
-                            ><i class="fa fa-circle-o"></i> Modals</a
+                        <a href="/admin/ListAdminmenu"
+                            ><i class="fa fa-circle-o"></i> 菜单列表</a
                         >
                     </li>
                 </ul>

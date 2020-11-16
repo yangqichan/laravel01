@@ -30,7 +30,7 @@
 	<script type="text/javascript" src="/indexyh/js/lrscroll_1.js"></script>
     
     
-<title>尤洪</title>
+<title>樱花商城 - 登录</title>
 </head>
 <body>  
 <!--Begin Header Begin-->
@@ -46,10 +46,10 @@
 <!--Begin Login Begin-->
 <div class="log_bg">	
     <div class="top">
-        <div class="logo"><a href="/"><img src="/indexyh/images/logo.jpg" /></a></div>
+        <!-- <div class="logo"><a href="/"><img src="/indexyh/images/logo.png" /></a></div> -->
     </div>
 	<div class="login">
-    	<div class="log_img"><img src="/indexyh/images/l_img.png" width="611" height="425" /></div>
+    	<div class="log_img"><img src="/indexyh/images/logo.png" width="611" height="425" /></div>
 		<div class="log_c">
         	<form>
             <table border="0" style="width:370px; font-size:14px; margin-top:30px;" cellspacing="0" cellpadding="0">
