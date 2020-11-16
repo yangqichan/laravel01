@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Coupon;
-class Couponcontroller extends Controller
+use App\Models\Position;
+use App\Models\Ad;
+class PositionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class Couponcontroller extends Controller
      */
     public function index()
     {
-        $data=Coupon::get();
-        return view('admin.coupon.index',['data'=>$data]);
+        $data=Position::get();
+        return view('admin.position.index',compact('data'));
     }
 
     /**
@@ -25,8 +26,7 @@ class Couponcontroller extends Controller
      */
     public function create()
     {
-
-        return view('admin.coupon.create');
+        return view('admin.position.create');
     }
 
     /**
@@ -37,27 +37,24 @@ class Couponcontroller extends Controller
      */
     public function store(Request $request)
     {
-        $post=request()->except('_token');
-        //dd($post);
-        $post['start_time']=strtotime($post['start_time']);
-        $post['end_time']=strtotime($post['end_time']);
-        //dd($post);
-        $res=Coupon::create($post);
-        if ($res) {
-            return redirect('coupon');
+        $post=$request->except('_token');
+        $red=Position::insert($post);
+        if ($red) {
+           return redirect('position');
         }
-        
     }
 
     /**
      * Display the specified resource.
-     *
+     *查看广告
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $data=Ad::where('position_id',$id)->get();
+        //dd($data);
+        return view('admin.position.show',compact('data'));
     }
 
     /**
@@ -68,8 +65,8 @@ class Couponcontroller extends Controller
      */
     public function edit($id)
     {
-        $data=Coupon::where('coupon_id',$id)->first();
-        return view('admin.coupon.edit',compact('data'));
+        $data=Position::find($id);
+        return view('admin.position.edit',compact('data'));
     }
 
     /**
@@ -81,16 +78,11 @@ class Couponcontroller extends Controller
      */
     public function update(Request $request, $id)
     {
-       $post=request()->except('_token');
-        //dd($post);
-        $post['start_time']=strtotime($post['start_time']);
-        $post['end_time']=strtotime($post['end_time']);
-        //dd($post);
-        $res=Coupon::where('coupon_id',$id)->update($post);
-        if ($res!==false) {
-            return redirect('coupon');
+        $post=$request->except('_token');
+        $data=Position::where('position_id',$id)->update($post);
+        if ($data!==false) {
+            return redirect('/position');
         }
-        
     }
 
     /**
@@ -101,9 +93,9 @@ class Couponcontroller extends Controller
      */
     public function destroy($id)
     {
-        $res=Coupon::destroy($id);
-        if ($res) {
-            return json_encode(['code'=>001,'msg'=>"删除成功"]);
+        $red=Position::destroy($id);
+        if ($red) {
+            return json_encode(['code'=>'001','msg'=>"删除成功"]);
         }
     }
 }

@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Coupon;
-class Couponcontroller extends Controller
+use App\Models\Ad;
+use App\Models\Position;
+class AdController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class Couponcontroller extends Controller
      */
     public function index()
     {
-        $data=Coupon::get();
-        return view('admin.coupon.index',['data'=>$data]);
+        $data=Ad::leftjoin('position','ad.position_id','=','position.position_id')->get();
+        return view('admin.ad.index',compact('data'));
     }
 
     /**
@@ -26,7 +27,7 @@ class Couponcontroller extends Controller
     public function create()
     {
 
-        return view('admin.coupon.create');
+        return view('admin.ad.create');
     }
 
     /**
@@ -38,15 +39,15 @@ class Couponcontroller extends Controller
     public function store(Request $request)
     {
         $post=request()->except('_token');
-        //dd($post);
         $post['start_time']=strtotime($post['start_time']);
         $post['end_time']=strtotime($post['end_time']);
-        //dd($post);
-        $res=Coupon::create($post);
-        if ($res) {
-            return redirect('coupon');
+        // if (request()->hasFile('ad_img') && request()->file('ad_img')->isValid()) {
+        //     # code...
+        // }
+        $red=Ad::insert($post);
+        if ($red) {
+            return redirect('ad');
         }
-        
     }
 
     /**
@@ -68,8 +69,8 @@ class Couponcontroller extends Controller
      */
     public function edit($id)
     {
-        $data=Coupon::where('coupon_id',$id)->first();
-        return view('admin.coupon.edit',compact('data'));
+        $data=Ad::where('ad_id',$id)->first();
+        return view('admin.ad.edit',compact('data'));
     }
 
     /**
@@ -81,16 +82,13 @@ class Couponcontroller extends Controller
      */
     public function update(Request $request, $id)
     {
-       $post=request()->except('_token');
-        //dd($post);
+        $post=request()->except('_token');
         $post['start_time']=strtotime($post['start_time']);
         $post['end_time']=strtotime($post['end_time']);
-        //dd($post);
-        $res=Coupon::where('coupon_id',$id)->update($post);
-        if ($res!==false) {
-            return redirect('coupon');
+        $red=Ad::where('ad_id',$id)->update($post);
+        if ($red!==false) {
+            return redirect('ad');
         }
-        
     }
 
     /**
@@ -101,9 +99,9 @@ class Couponcontroller extends Controller
      */
     public function destroy($id)
     {
-        $res=Coupon::destroy($id);
-        if ($res) {
-            return json_encode(['code'=>001,'msg'=>"删除成功"]);
+        $red=Ad::destroy($id);
+        if ($red) {
+            return json_encode(['code'=>001,'msg'=>'删除成功']);
         }
     }
 }

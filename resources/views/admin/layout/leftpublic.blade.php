@@ -70,14 +70,25 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="pages/widgets.html">
-                    <i class="fa fa-th"></i> <span>优惠管理</span>
+
+             <li class="treeview">
+                <a>
+                    <i class="fa fa-pie-chart"></i>
+                    <span>优惠管理</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/coupon"><i class="fa fa-circle-o"></i>优惠列表</a>
+                    </li>
+                    <li>
+                        <a href="/coupon/create"><i class="fa fa-circle-o"></i>优惠添加</a>
+                    </li>
+                </ul>
             </li>
+
             <li class="treeview">
                 <a>
                     <i class="fa fa-pie-chart"></i>
@@ -99,6 +110,7 @@
                     </li>
                 </ul>
             </li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-laptop"></i>
@@ -162,20 +174,30 @@
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-table"></i> <span>商品分类</span>
+                    <i class="fa fa-table"></i> <span>广告管理</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="/category/create"
-                            ><i class="fa fa-circle-o"></i> 添加分类</a
+                        <a href="/ad/create"
+                            ><i class="fa fa-circle-o"></i>广告添加</a
                         >
                     </li>
                     <li>
-                        <a href="/category/index"
-                            ><i class="fa fa-circle-o"></i> 分类列表</a
+                        <a href="/ad"
+                            ><i class="fa fa-circle-o"></i>广告列表</a
+                        >
+                    </li>
+                    <li>
+                        <a href="/position/create"
+                            ><i class="fa fa-circle-o"></i>广告位添加</a
+                        >
+                    </li>
+                    <li>
+                        <a href="/position"
+                            ><i class="fa fa-circle-o"></i>广告位列表</a
                         >
                     </li>
                 </ul>
@@ -200,15 +222,25 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="pages/mailbox/mailbox.html">
-                    <i class="fa fa-envelope"></i> <span>Mailbox</span>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-envelope"></i> <span>商品分类</span>
                     <span class="pull-right-container">
-                        <small class="label pull-right bg-yellow">12</small>
-                        <small class="label pull-right bg-green">16</small>
-                        <small class="label pull-right bg-red">5</small>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/category/create"
+                            ><i class="fa fa-circle-o"></i> 添加分类</a
+                        >
+                    </li>
+                    <li>
+                        <a href="/category/index"
+                            ><i class="fa fa-circle-o"></i> 分类列表</a
+                        >
+                    </li>
+                </ul>
             </li>
             <li class="treeview">
                 <a href="#">

@@ -10,7 +10,8 @@ use App\Http\Controllers\Admin\OperateController;       // 后台运营
 use App\Http\Controllers\Admin\LoginController;         // 登录
 use App\Http\Controllers\Admin\AdministratorController; // RBAC
 use App\Http\Controllers\Admin\Couponcontroller;        // 优惠模块
-
+use App\Http\Controllers\Admin\AdController;            //广告模块
+use App\Http\Controllers\Admin\PositionController;      //广告位模块
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,9 +31,11 @@ Route::domain('laravel01.yqc.ink')->group(function(){
 });
 //后台模块
 Route::domain('admin.yqc.ink')->group(function(){
+
     Route::any('/login', [LoginController::class, 'login']);     // 登录界面
     Route::any('/logindo', [LoginController::class, 'logindo']); // 登录
     Route::any('/unlogin', [LoginController::class, 'unlogin']); // 退出登录
+
     Route::middleware('Admin')->group(function(){
         // 后台首页
         Route::view('/', 'admin.adminmain.index');
@@ -57,18 +60,43 @@ Route::domain('admin.yqc.ink')->group(function(){
             // RBAC 后台菜单列表
             Route::get('/ListAdminmenu',[AdministratorController::class,'ListAdminmenu']);
         });
-        // 优惠模块
+
+        //优惠模块
         Route::prefix('coupon')->group(function(){
-            Route::any('create', [Couponcontroller::class, 'create'])->name('coupon.create');  //优惠添加
-            Route::any('store', [Couponcontroller::class, 'store'])->name('coupon.store');  //优惠执行添加
-            Route::any('/', [Couponcontroller::class, 'index'])->name('coupon.index');         //优惠展示
-            Route::any('del', [Couponcontroller::class, 'destroy'])->name('coupon.del');       //优惠删除
-            Route::any('update', [Couponcontroller::class, 'update'])->name('coupon.update');  //优惠修改
-        });
+        Route::any('create', [Couponcontroller::class, 'create'])->name('coupon.create');  //优惠添加
+        Route::any('store', [Couponcontroller::class, 'store'])->name('coupon.store');  //优惠执行添加
+        Route::any('/', [Couponcontroller::class, 'index'])->name('coupon.index');         //优惠展示
+        Route::any('del/{id}', [Couponcontroller::class, 'destroy'])->name('coupon.del');       //优惠删除
+        Route::any('edit/{id}', [Couponcontroller::class, 'edit'])->name('coupon.edit');  //优惠修改
+        Route::any('update/{id}', [Couponcontroller::class, 'update'])->name('coupon.update');  //优惠修改
+         });
         // 运营模块
         Route::prefix('operate')->group(function(){
             Route::any('/',[OperateController::class , 'operate'])->name('operate');
         });
+
+        //广告模块
+        Route::prefix('ad')->group(function(){
+            Route::any('/',[AdController::class , 'index'])->name('ad');                   //广告展示
+            Route::any('create',[AdController::class , 'create'])->name('ad.create');      //广告添加
+            Route::any('store',[AdController::class , 'store'])->name('ad.store');         //广告执行添加
+            Route::any('del/{id}',[AdController::class, 'destroy'])->name('ad.del');       //广告删除
+            Route::any('edit/{id}',[AdController::class, 'edit'])->name('ad.edit');        //广告修改
+            Route::any('update/{id}',[AdController::class , 'update'])->name('ad.update'); //广告执行修改
+        });
+
+        //广告位模块
+        Route::prefix('position')->group(function(){
+            Route::any('/',[PositionController::class , 'index'])->name('position');              //广告位展示
+            Route::any('create',[PositionController::class , 'create'])->name('position.create'); //广告位添加
+            Route::any('store',[PositionController::class , 'store'])->name('position.store');    //广告位执行添加
+            Route::any('del/{id}',[PositionController::class, 'destroy'])->name('position.del');  //广告位删除
+            Route::any('edit/{id}',[PositionController::class, 'edit'])->name('position.edit');   //广告位修改
+            Route::any('update/{id}',[PositionController::class , 'update'])->name('position.update'); //广告位执行修改
+            Route::any('show/{id}',[PositionController::class, 'show'])->name('position.edit');   //广告位查看广告
+        });
+    });
+
         //品牌
         Route::prefix('brand')->group(function(){
             Route::get('/create',[BrandController::class, 'create'])->name('brand.create');
@@ -116,6 +144,7 @@ Route::domain('admin.yqc.ink')->group(function(){
             Route::any('/edit/{id}',[GoodsattrController::class, 'edit'])->name('goodsattr.edit');//没写
             Route::any('/update/{id}',[GoodsattrController::class, 'update'])->name('goodsattr.update');//没写
         });
-    });  
+  
+
 });
 
