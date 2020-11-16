@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title','商品品牌')
+@section('title','商品')
 @section('content')
 <!-- Main content -->
 <section class="content">
@@ -17,25 +17,45 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                            <th>品牌ID</th>
-                            <th>品牌名称</th>
-                            <th>品牌介绍</th>
-                            <th>品牌logo</th>
-                            <th>品牌官方网址</th>
+                            <th>商品ID</th>
+                            <th>商品名称</th>
+                            <th>商品价格</th>
+                            <th>商品数量</th>
+                            <th>所属分类</th>
+                            <th>所属品牌</th>
+                            <th>是否上架</th>
+                            <th>是否热卖</th>
+                            <th>商品图片</th>
+                            <th>商品货号</th>
                             <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($brand as $k=>$v)
+                        @foreach($goods as $k=>$v)
                             <tr>
-                                <td>{{$v->brand_id}}</td>
+                                <td>{{$v->goods_id}}</td>
+                                <td>{{$v->goods_name}}</td>
+                                <td>{{$v->goods_price}}</td>
+                                <td>{{$v->num}}</td>
+                                <td>{{$v->cate_name}}</td>
                                 <td>{{$v->brand_name}}</td>
-                                <td>{{$v->brand_desc}}</td>
-                                <td><img src="{{env('UPLOAD_URL')}}{{$v->brand_logo}}" style="width:100px;height:60px;"></td>
-                                <td>{{$v->brand_url}}</td>
+                                <td>@if($v->is_up == 0)
+                                        上架
+                                    @else
+                                        下架
+                                    @endif
+                                </td>
+                                <td>@if($v->is_hot == 0)
+                                        热卖
+                                    @else
+                                        非热卖
+                                    @endif
+                                </td>
+                                <td><img src="{{env('UPLOAD_URL')}}{{$v->goods_img}}" style="width:100px;height:80px;"></td>
+                                <td>{{$v->goods_sn}}</td>
                                 <td>
-                                <a href="/brand/del/{{$v->brand_id}}"><button type="button" class="btn btn-danger">删除</button></a>
-                                <a href="/brand/edit/{{$v->brand_id}}"><button type="button" class="btn btn-primary">修改</button></a>
+                                <a href="/goods/del/{{$v->goods_id}}"><button type="button" class="btn btn-danger">删除</button></a>
+                                <a href="/goods/edit/{{$v->goods_id}}"><button type="button" class="btn btn-primary">修改</button></a>
                                 </td>
                             </tr>
                         @endforeach

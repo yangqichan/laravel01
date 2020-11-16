@@ -22,7 +22,9 @@ class GoodsController extends Controller
      */
     public function index()
     {
-        //
+        $goods = Goods::select('goods.*','brand_name','cate_name')->leftjoin('brand','brand.brand_id','=','goods.brand_id')->leftjoin('category','goods.cate_id','=','category.cate_id')->where('goods.is_del',0)->get();
+        // dd($goods);
+        return view('admin.goods.index',['goods'=>$goods]);
     }
 
     /**
@@ -191,7 +193,13 @@ class GoodsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $goods = Goods::where('goods_id',$id)->first();
+        $brand = Brand::where('is_del',0)->get();
+        $category = Category::where('is_del',0)->get();
+        $category = $this->getTree($category);
+        //类型
+        $goods_type = Goodstype::where('is_del',0)->get();
+        return view('admin.goods.edit',['goods'=>$goods,'brand'=>$brand,'category'=>$category,'goods_type'=>$goods_type]);
     }
 
     /**
@@ -203,7 +211,34 @@ class GoodsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except(['_token','attr_price_list','attr_value_list','attr_id_list','type_id']);
+        if(empty($goods_sn)){
+            $data['goods_sn'] = 'SHOP'.time().rand(0000,9999);
+        }
+        //图片
+        if($request->hasFile('goods_img') && $request->file('goods_img')->isValid()) {
+            $file = $request->goods_img;
+            $data['goods_img'] = '/'.$file->store('goods_img');
+        }
+        // dd($request->file('goods_imgs'));
+        //相册
+        if($request->hasFile('goods_imgs')) {
+            $file = $request->goods_imgs;
+            // dd($file);
+            $goods_imgs=[];
+            foreach($file as $k=>$v){
+                $goods_imgs[] = '/'.$v->store('goods_imgs');
+            }
+            $data['goods_imgs']=implode('|',$goods_imgs);
+        }
+        // $data['add_time']=time();
+        //$res指的是goods_id
+        $res = Goods::where('goods_id',$id)->update($data);
+        if($res !== false){
+            return redirect('/goods/index');
+        }else{
+            return redirect('/goods/edit/'.$id);
+        }
     }
 
     /**
@@ -214,7 +249,12 @@ class GoodsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = Goods::where('goods_id',$id)->update(['is_del'=>1]);
+        if($res){
+            Goodsattr::where('goods_id',$id)->update(['is_del'=>1]);
+            Product::where('goods_id',$id)->update(['is_del'=>1]);
+            return redirect('/goods/index');
+        }
     }
     /**
      * 商品属性

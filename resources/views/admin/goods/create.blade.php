@@ -85,7 +85,7 @@
                                     <div class="form-group">
                                         <label for="firstname" class="col-sm-2 control-label">所属品牌</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="cate_id" id="firstname">
+                                            <select class="form-control" name="brand_id" id="firstname">
                                                 <option value="">请选择</option>
                                                 @foreach($brand as $k=>$v)
                                                 <option value="{{$v->brand_id}}">{{$v->brand_name}}</option>
@@ -96,7 +96,7 @@
                                     <div class="form-group">
                                         <label for="lastname" class="col-sm-2 control-label">所属分类</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="brand_id" id="firstname">
+                                            <select class="form-control" name="cate_id" id="firstname">
                                                 <option value="">请选择</option>
                                                 @foreach($category as $k=>$v)
                                                 <option value="{{$v->cate_id}}">{{str_repeat('—',$v->level*3)}}{{$v->cate_name}}</option>

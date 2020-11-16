@@ -142,57 +142,63 @@
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-edit"></i> <span>Forms</span>
+                    <i class="fa fa-edit"></i> <span>商品管理</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="pages/forms/general.html"
-                            ><i class="fa fa-circle-o"></i> General Elements</a
+                        <a href="/goods/create"
+                            ><i class="fa fa-circle-o"></i> 商品添加</a
                         >
                     </li>
                     <li>
-                        <a href="pages/forms/advanced.html"
-                            ><i class="fa fa-circle-o"></i> Advanced Elements</a
-                        >
-                    </li>
-                    <li>
-                        <a href="pages/forms/editors.html"
-                            ><i class="fa fa-circle-o"></i> Editors</a
+                        <a href="/goods/index"
+                            ><i class="fa fa-circle-o"></i> 商品列表</a
                         >
                     </li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-table"></i> <span>Tables</span>
+                    <i class="fa fa-table"></i> <span>商品分类</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="pages/tables/simple.html"
-                            ><i class="fa fa-circle-o"></i> Simple tables</a
+                        <a href="/category/create"
+                            ><i class="fa fa-circle-o"></i> 添加分类</a
                         >
                     </li>
                     <li>
-                        <a href="pages/tables/data.html"
-                            ><i class="fa fa-circle-o"></i> Data tables</a
+                        <a href="/category/index"
+                            ><i class="fa fa-circle-o"></i> 分类列表</a
                         >
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="pages/calendar.html">
-                    <i class="fa fa-calendar"></i> <span>Calendar</span>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-calendar"></i> <span>商品类型</span>
                     <span class="pull-right-container">
-                        <small class="label pull-right bg-red">3</small>
-                        <small class="label pull-right bg-blue">17</small>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/goodstype/create"
+                            ><i class="fa fa-circle-o"></i> 添加类型</a
+                        >
+                    </li>
+                    <li>
+                        <a href="/goodstype/index"
+                            ><i class="fa fa-circle-o"></i> 类型列表</a
+                        >
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="pages/mailbox/mailbox.html">
