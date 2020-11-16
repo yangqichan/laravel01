@@ -26,7 +26,7 @@ use App\Http\Controllers\Admin\Couponcontroller;        // 优惠模块
 Route::domain('laravel01.yqc.ink')->group(function(){
     Route::view('/', 'index.indexmain.index');                        // 前台首页
     Route::view('/login', 'index.rl.login');                          // 前台登录
-    Route::view('/reg', 'index.indexmain.index');                     // 前台注册
+    Route::view('/reg', 'index.rl.reg');                     // 前台注册
 });
 //后台模块
 Route::domain('admin.yqc.ink')->group(function(){
@@ -36,24 +36,25 @@ Route::domain('admin.yqc.ink')->group(function(){
     Route::middleware('Admin')->group(function(){
         // 后台首页
         Route::view('/', 'admin.adminmain.index');
+        // RBAC 后台管理员
         Route::prefix('admin')->group(function(){
-            // RBAC 后台管理员
+            // 管理员添加
             Route::get('/Adminuser',[AdministratorController::class,'Adminuser']);
-            // RBAC 后台管理员添加
+            // 管理员添加   #没加验证
             Route::any('/InsertAdminuser',[AdministratorController::class,'InsertAdminuser']);
-            // RBAC 后台管理员列表
+            // 管理员列表
             Route::get('/ListAdminuser',[AdministratorController::class,'ListAdminuser']);
-            // RBAC 后台角色
+            // 后台角色添加
             Route::get('/Adminrole',[AdministratorController::class,'Adminrole']);
             // RBAC 后台角色添加
             Route::post('/InsertAdminrole',[AdministratorController::class,'InsertAdminrole']);
             // RBAC 后台角色列表
             Route::get('/ListAdminrole',[AdministratorController::class,'ListAdminrole']);
-            // RBAC 后台权限
+            // RBAC 后台菜单表单
             Route::get('/Adminmenu',[AdministratorController::class,'Adminmenu']);
-            // RBAC 后台权限添加
+            // RBAC 后台菜单添加
             Route::post('/InsertAdminmenu',[AdministratorController::class,'InsertAdminmenu']);
-            // RBAC 后台权限列表
+            // RBAC 后台菜单列表
             Route::get('/ListAdminmenu',[AdministratorController::class,'ListAdminmenu']);
         });
         // 优惠模块
