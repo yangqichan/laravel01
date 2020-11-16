@@ -14,6 +14,7 @@
                     <div class="box-body">
                     </div>
                     <a href="/goodsattr/create/{{$type_id}}"><button type="button" class="btn btn-success">添加属性</button></a>
+                    <a href="/goodstype/index"><button type="button" class="btn btn-info">类型列表</button></a>
                     <div class="box-footer clearfix">
                     <table class="table table-striped">
                         <thead>
@@ -55,7 +56,7 @@
                                     {{$v->attr_values}}
                                 </td>
                                 <td>
-                                <button type="button" class="btn btn-danger" id="del" cate_id="{{$v->cate_id}}">删除</button>
+                                <button type="button" class="btn btn-danger" id="del" attr_id="{{$v->attr_id}}" type_id="{{$type_id}}">删除</button>
                                 <a href="/goodsattr/edit/{{$v->attr_id}}"><button type="button" class="btn btn-primary">修改</button></a>
                                 </td>
                             </tr>
@@ -73,4 +74,21 @@
         <!-- /.row (main row) -->
     </section>
     <!-- /.content -->
+    <script src='/static/error/jquery.min.js'></script>
+    <script>
+        //删除
+        $(document).on('click','#del',function(){
+                var attr_id=$(this).attr('attr_id');
+                var type_id=$(this).attr('type_id');
+                $.get('/goodsattr/del/'+attr_id,{attr_id:attr_id,type_id:type_id},function(res){
+                    if(res.code == 200){
+                        location.reload();
+                        // $(this).parents('tr').addClass('display: none');
+                    }else{
+                        alert(res.msage);
+                        location.reload();
+                    }                    
+                })
+        })
+    </script>
     @endsection

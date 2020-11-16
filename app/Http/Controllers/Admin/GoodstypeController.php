@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Goodstype;
+use App\Models\Attr;
 
 class GoodstypeController extends Controller
 {
@@ -64,7 +65,9 @@ class GoodstypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $goodstype = Goodstype::where('type_id',$id)->first();
+        // dd($goodstype);
+        return view('admin.goodstype.edit',['goodstype'=>$goodstype]);
     }
 
     /**
@@ -76,7 +79,14 @@ class GoodstypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token');
+        // dd($data);
+        $res = Goodstype::where('type_id',$id)->update($data);
+        if($res){
+            return redirect('/goodstype/index');
+        }else{
+            return redirect('/goodstype/edit/'.$id);
+        }
     }
 
     /**
@@ -87,6 +97,19 @@ class GoodstypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Attr::where(['is_del'=>0,'type_id'=>$id])->get();
+        if(count($data)>0){
+            return $message=[
+                'code'=>10000,
+                'msage'=>'该类型底下有属性！'
+            ];
+        }
+        $res = Goodstype::where('type_id',$id)->update(['is_del'=>1]);
+        if($res){
+            return $message=[
+                'code'=>200,
+                'msage'=>'删除成功'
+            ];
+        }
     }
 }

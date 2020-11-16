@@ -14,6 +14,15 @@
                     <div class="box-body">
                     </div>
                     <div class="box-footer clearfix">
+                        @if ($errors->any())
+                        <div style="padding-bottom: 20px; padding-left: 30px; background-color: pink">
+                            <ul>
+                            @foreach ($errors->all() as $error)
+                                <li style="color:#ff0000; padding-top: 10px;">{{ $error }}</li>
+                            @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         <form class="form-horizontal" role="form"  action="{{url('/brand/store')}}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="firstname" class="col-sm-2 control-label">品牌名称</label>

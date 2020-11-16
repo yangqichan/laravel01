@@ -14,6 +14,13 @@
                     <div class="box-body">
                     </div>
                     <div class="box-footer clearfix">
+                    <form>
+                        <div class="input-group">
+                            <span class="input-group-addon">品牌名称</span>
+                            <input type="text" class="form-control" name="brand_name" value="{{$brand_name}}" placeholder="请输入品牌名称" style="width:20%;">
+                            <button type="submit" class="btn btn-success">搜索</button>
+                        </div>
+                    </form>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -40,6 +47,7 @@
                             </tr>
                         @endforeach
                         </tbody>
+                        <tr><td colspan="6">{{$brand->links('vendor.pagination.default')}}</td></tr>
                     </table>
                     </div>
                 </div>

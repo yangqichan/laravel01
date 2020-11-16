@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Attr;
 use App\Models\Goodstype;
-
+use App\Models\Goodsattr;
 class GoodsattrController extends Controller
 {
     /**
@@ -16,7 +16,7 @@ class GoodsattrController extends Controller
      */
     public function index($type_id)
     {
-        $data = Attr::leftjoin('goods_type','goods_type.type_id','=','attribute.type_id')->where('attribute.type_id',$type_id)->get();
+        $data = Attr::leftjoin('goods_type','goods_type.type_id','=','attribute.type_id')->where('attribute.type_id',$type_id)->where('attribute.is_del',0)->get();
         // dd($data);
         return view('admin.goodsattr.index',['data'=>$data,'type_id'=>$type_id]);
     }
@@ -67,7 +67,9 @@ class GoodsattrController extends Controller
      */
     public function edit($id)
     {
-        //
+        $attr = Attr::where('attr_id',$id)->first();
+        $data = Goodstype::get();
+        return view('admin.goodsattr.edit',['attr'=>$attr,'data'=>$data]);
     }
 
     /**
@@ -79,7 +81,13 @@ class GoodsattrController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token');
+        $res = Attr::where('attr_id',$id)->update($data);
+        if($res!==false){
+            return redirect("/goodsattr/index/".$data['type_id']);
+        }else{
+            return redirect("/goodsattr/edit/".$id);
+        }
     }
 
     /**
@@ -90,6 +98,19 @@ class GoodsattrController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $goodsattr = Goodsattr::where('attr_id',$id)->get();
+        if(count($goodsattr)>0){
+            return $msage=[
+                'code'=>10000,
+                'msage'=>'该属性底下有商品,不能删！'
+            ];
+        }
+        $attr = Attr::where('attr_id',$id)->update(['is_del'=>1]);
+        if($attr){
+            return $msage=[
+                'code'=>200,
+                'msage'=>'删除成功'
+            ];
+        }
     }
 }

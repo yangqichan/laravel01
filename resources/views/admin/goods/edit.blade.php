@@ -19,6 +19,15 @@
                 <div class="box box-info">
                     <div class="box-body">
                     </div>
+                    @if ($errors->any())
+                      <div style="padding-bottom: 20px; padding-left: 30px; background-color: pink">
+                        <ul>
+                          @foreach ($errors->all() as $error)
+                            <li style="color:#ff0000; padding-top: 10px;">{{ $error }}</li>
+                          @endforeach
+                        </ul>
+                      </div>
+                    @endif
                     <form class="form-horizontal" role="form"  action="{{url('/goods/update/'.$goods->goods_id)}}" method="post" enctype="multipart/form-data">
                     <nav class="navbar navbar-default" role="navigation">
                     <div>
@@ -41,6 +50,7 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade in active" id="home">
                                 <div class="box-footer clearfix">
+                                    <input type="hidden" value="{{$goods->goods_id}}" name="goods_id">
                                     <div class="form-group">
                                         <label for="firstname" class="col-sm-2 control-label">商品名称</label>
                                         <div class="col-sm-10">

@@ -30,7 +30,7 @@
                                     {{$v->type_name}}
                                 </td>
                                 <td>
-                                <button type="button" class="btn btn-danger" id="del" cate_id="{{$v->cate_id}}">删除</button>
+                                <button type="button" class="btn btn-danger" id="del" type_id="{{$v->type_id}}">删除</button></a>
                                 <a href="/goodstype/edit/{{$v->type_id}}"><button type="button" class="btn btn-primary">修改</button></a>
                                 <a href="/goodsattr/index/{{$v->type_id}}"><button type="button" class="btn btn-success">属性列表</button></a>
                                 </td>
@@ -49,4 +49,21 @@
         <!-- /.row (main row) -->
     </section>
     <!-- /.content -->
+    <script src='/static/error/jquery.min.js'></script>
+    <script>
+        //删除
+        $(document).on('click','#del',function(){
+            var type_id=$(this).attr('type_id');
+//            alert(cate_id);
+            $.get('/goodstype/del/'+type_id,function(res){
+                if(res.code == 200){
+                    location.reload();
+                    // $(this).parents('tr').addClass('display: none');
+                }else{
+                    alert(res.msage);
+                    location.reload();
+                }
+            })
+        })
+    </script>
     @endsection
