@@ -57,7 +57,6 @@
                                 <td>
                                 <button type="button" class="btn btn-danger" id="del" cate_id="{{$v->cate_id}}">删除</button>
                                 <a href="/goodsattr/edit/{{$v->attr_id}}"><button type="button" class="btn btn-primary">修改</button></a>
-                                <a href="/goodsattr/index/{{$v->attr_id}}"><button type="button" class="btn btn-success">属性列表</button></a>
                                 </td>
                             </tr>
                         @endforeach

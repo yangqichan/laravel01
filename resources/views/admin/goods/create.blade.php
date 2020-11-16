@@ -64,6 +64,13 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label for="firstname" class="col-sm-2 control-label">商品货号</label>
+                                        <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="goods_sn" id="firstname" 
+                                            placeholder="请输入商品货号">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="lastname" class="col-sm-2 control-label">商品图片</label>
                                         <div class="col-sm-10">
                                         <input type="file" name="goods_img">
@@ -72,7 +79,7 @@
                                     <div class="form-group">
                                         <label for="lastname" class="col-sm-2 control-label">商品相册</label>
                                         <div class="col-sm-10">
-                                        <input type="file" name="goods_imgs" multiple>
+                                        <input type="file" name="goods_imgs[]" multiple>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -100,15 +107,15 @@
                                     <div class="form-group">
                                         <label for="lastname" class="col-sm-2 control-label">是否上架</label>
                                         <div class="col-sm-10">
-                                        <input type="radio" name="is_up" checked>是
-                                        <input type="radio" name="is_up">否
+                                        <input type="radio" name="is_up" value="0" checked>是
+                                        <input type="radio" name="is_up" value="1">否
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="lastname" class="col-sm-2 control-label">是否热卖</label>
                                         <div class="col-sm-10">
-                                        <input type="radio" name="is_hot" checked>是
-                                        <input type="radio" name="is_hot">否
+                                        <input type="radio" name="is_hot" value="0" checked>是
+                                        <input type="radio" name="is_hot" value="1">否
                                         </div>
                                     </div>
                                     
@@ -117,8 +124,22 @@
                             <div role="tabpanel" class="tab-pane fade" id="profile">
                                 <script id="editor" type="text/plain" style="width:1024px;height:500px;" name="goods_desc"></script>
                             </div>
-                            <div role="tabpanel" class="tab-pane fade" id="messages">3</div>
-                            <div role="tabpanel" class="tab-pane fade" id="settings">4</div>
+                            <div role="tabpanel" class="tab-pane fade" id="messages">
+                            <div class="box-footer clearfix">
+                                <div class="form-group">
+                                        <label for="lastname" class="col-sm-2 control-label">商品类型</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control" name="type_id" id="goods_type">
+                                                <option value="">请选择</option>
+                                                @foreach($goods_type as $k=>$v)
+                                                <option value="{{$v->type_id}}">{{$v->type_name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <span class="goodsattr"></span>
+                                  </div>                                  
+                            </div>
+                            </div>
                         </div>
                         <button type="submit" class="pull-right btn btn-default" id="sendEmail">
                                         添加 <i class="fa fa-arrow-circle-right"></i>
@@ -136,6 +157,21 @@
     <!-- /.content -->
 <script src="/static/jquery.min.js"></script>
   <script>
+
+$(document).on('change','#goods_type',function(){
+    var type_id = $(this).val();
+    // alert(type_id);
+    $.ajax({
+        url:'/goods/goodsattr',
+        data:{type_id:type_id},
+        type:'post',
+        success:function(res){
+          // console.log(res);
+            $('.goodsattr').html(res);
+        }
+    })
+});
+
   function addSpec(obj){
     var newobj = $(obj).parent().parent().clone();
     newobj.find('a').html('[-]');

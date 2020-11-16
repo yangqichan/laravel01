@@ -91,6 +91,8 @@ Route::domain('admin.yqc.ink')->group(function(){
             Route::get('/create',[GoodsController::class, 'create'])->name('goods.create');
             Route::post('/store',[GoodsController::class, 'store'])->name('goods.store');
             Route::get('/index',[GoodsController::class, 'index'])->name('goods.index');
+            Route::any('/goodsattr',[GoodsController::class, 'goodsattr'])->name('goods.goodsattr');
+            Route::any('/product',[GoodsController::class, 'product'])->name('goods.product');
             Route::any('/del/{id}',[GoodsController::class, 'destroy'])->name('goods.del');
             Route::any('/edit/{id}',[GoodsController::class, 'edit'])->name('goods.edit');
             Route::any('/update/{id}',[GoodsController::class, 'update'])->name('goods.update');
