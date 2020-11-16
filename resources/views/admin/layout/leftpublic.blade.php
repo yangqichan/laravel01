@@ -183,13 +183,23 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="pages/tables/simple.html"
+                        <a href="/ad/create"
                             ><i class="fa fa-circle-o"></i>广告添加</a
                         >
                     </li>
                     <li>
-                        <a href="pages/tables/data.html"
+                        <a href="/ad"
                             ><i class="fa fa-circle-o"></i>广告列表</a
+                        >
+                    </li>
+                    <li>
+                        <a href="/position/create"
+                            ><i class="fa fa-circle-o"></i>广告位添加</a
+                        >
+                    </li>
+                    <li>
+                        <a href="/position"
+                            ><i class="fa fa-circle-o"></i>广告位列表</a
                         >
                     </li>
                 </ul>

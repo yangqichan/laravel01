@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Ad;
 use App\Models\Position;
-class AdController extends Controller
+use App\Models\Ad;
+class PositionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class AdController extends Controller
      */
     public function index()
     {
-        $data=Ad::leftjoin('position','ad.position_id','=','position.position_id')->get();
-        return view('admin.ad.index',compact('data'));
+        $data=Position::get();
+        return view('admin.position.index',compact('data'));
     }
 
     /**
@@ -26,8 +26,7 @@ class AdController extends Controller
      */
     public function create()
     {
-
-        return view('admin.ad.create');
+        return view('admin.position.create');
     }
 
     /**
@@ -38,27 +37,24 @@ class AdController extends Controller
      */
     public function store(Request $request)
     {
-        $post=request()->except('_token');
-        $post['start_time']=strtotime($post['start_time']);
-        $post['end_time']=strtotime($post['end_time']);
-        // if (request()->hasFile('ad_img') && request()->file('ad_img')->isValid()) {
-        //     # code...
-        // }
-        $red=Ad::insert($post);
+        $post=$request->except('_token');
+        $red=Position::insert($post);
         if ($red) {
-            return redirect('ad');
+           return redirect('position');
         }
     }
 
     /**
      * Display the specified resource.
-     *
+     *查看广告
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $data=Ad::where('position_id',$id)->get();
+        //dd($data);
+        return view('admin.position.show',compact('data'));
     }
 
     /**
@@ -69,8 +65,8 @@ class AdController extends Controller
      */
     public function edit($id)
     {
-        $data=Ad::where('ad_id',$id)->first();
-        return view('admin.ad.edit',compact('data'));
+        $data=Position::find($id);
+        return view('admin.position.edit',compact('data'));
     }
 
     /**
@@ -82,12 +78,10 @@ class AdController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post=request()->except('_token');
-        $post['start_time']=strtotime($post['start_time']);
-        $post['end_time']=strtotime($post['end_time']);
-        $red=Ad::where('ad_id',$id)->update($post);
-        if ($red!==false) {
-            return redirect('ad');
+        $post=$request->except('_token');
+        $data=Position::where('position_id',$id)->update($post);
+        if ($data!==false) {
+            return redirect('/position');
         }
     }
 
@@ -99,9 +93,9 @@ class AdController extends Controller
      */
     public function destroy($id)
     {
-        $red=Ad::destroy($id);
+        $red=Position::destroy($id);
         if ($red) {
-            return json_encode(['code'=>001,'msg'=>'删除成功']);
+            return json_encode(['code'=>'001','msg'=>"删除成功"]);
         }
     }
 }

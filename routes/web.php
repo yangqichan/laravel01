@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\LoginController;         // 登录
 use App\Http\Controllers\Admin\AdministratorController; // RBAC
 use App\Http\Controllers\Admin\Couponcontroller;        // 优惠模块
 use App\Http\Controllers\Admin\AdController;            //广告模块
-
+use App\Http\Controllers\Admin\PositionController;      //广告位模块
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -76,12 +76,23 @@ Route::domain('admin.yqc.ink')->group(function(){
 
         //广告模块
         Route::prefix('ad')->group(function(){
-            Route::any('/',[OperateController::class , 'index'])->name('ad');
-            Route::any('create',[OperateController::class , 'create'])->name('ad.create');
-            Route::any('store',[OperateController::class , 'store'])->name('ad.store');
-            Route::any('del',[OperateController::class, 'destroy'])->name('ad.del');
-            Route::any('edit/{id}',[OperateController::class, 'edit'])->name('ad.edit');
-            Route::any('update/{id}',[OperateController::class , 'update'])->name('ad.update');
+            Route::any('/',[AdController::class , 'index'])->name('ad');                   //广告展示
+            Route::any('create',[AdController::class , 'create'])->name('ad.create');      //广告添加
+            Route::any('store',[AdController::class , 'store'])->name('ad.store');         //广告执行添加
+            Route::any('del/{id}',[AdController::class, 'destroy'])->name('ad.del');       //广告删除
+            Route::any('edit/{id}',[AdController::class, 'edit'])->name('ad.edit');        //广告修改
+            Route::any('update/{id}',[AdController::class , 'update'])->name('ad.update'); //广告执行修改
+        });
+
+        //广告位模块
+        Route::prefix('position')->group(function(){
+            Route::any('/',[PositionController::class , 'index'])->name('position');              //广告位展示
+            Route::any('create',[PositionController::class , 'create'])->name('position.create'); //广告位添加
+            Route::any('store',[PositionController::class , 'store'])->name('position.store');    //广告位执行添加
+            Route::any('del/{id}',[PositionController::class, 'destroy'])->name('position.del');  //广告位删除
+            Route::any('edit/{id}',[PositionController::class, 'edit'])->name('position.edit');   //广告位修改
+            Route::any('update/{id}',[PositionController::class , 'update'])->name('position.update'); //广告位执行修改
+            Route::any('show/{id}',[PositionController::class, 'show'])->name('position.edit');   //广告位查看广告
         });
     });
 

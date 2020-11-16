@@ -48,7 +48,11 @@
             rel="stylesheet"
             href="/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"
         />
-        <!-- Daterange picker -->
+            <!-- Daterange picker -->
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+
         <link
             rel="stylesheet"
             href="/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css"
@@ -120,10 +124,7 @@
         <!-- jQuery Knob Chart -->
         <script src="/adminlte/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
         <!-- daterangepicker -->
-        <script src="/adminlte/bower_components/moment/min/moment.min.js"></script>
-        <script src="/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-        <!-- datepicker -->
-        <script src="/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        
         <!-- Bootstrap WYSIHTML5 -->
         <script src="/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
         <!-- Slimscroll -->
@@ -136,5 +137,14 @@
         <script src="/adminlte/dist/js/pages/dashboard.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="/adminlte/dist/js/demo.js"></script>
+
+        <script src="/adminlte/bower_components/moment/min/moment.min.js"></script>
+        <script src="/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <!-- datepicker -->
+        <script src="/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.js"></script>
+       <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     </body>
 </html>
