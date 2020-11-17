@@ -1,7 +1,6 @@
 @extends('admin.layout.main')
 @section('title','后台首页')
-@section('content')
-  <section class="content">
+@section('content')         
         <!-- Small boxes (Stat box) -->
  
         <!-- /.row -->
@@ -54,5 +53,4 @@
             <!-- right col -->
         </div>
         <!-- /.row (main row) -->
-    </section>
  @endsection 

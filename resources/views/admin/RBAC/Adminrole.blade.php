@@ -14,23 +14,15 @@
                     <div class="box-body">
                     </div>
                     <div class="box-footer clearfix">
-      <form class="form-horizontal" role="form" action="{{url('admin/InsertAdminuser')}}" method="post">@csrf
+      <form class="form-horizontal" role="form" action="{{url('admin/InsertAdminrole')}}" method="post">@csrf
        <div class="form-group">
         <label for="firstname" class="col-sm-2 control-label">角色名称</label>
         <div class="col-sm-10">
-         <input type="text" class="form-control" id="admin_account" name="admin_account" 
+         <input type="text" class="form-control" id="role_name" name="role_name" 
              placeholder="请输入角色名称">
         </div>
        </div>
        <div class="form-group">
-        <label for="lastname" class="col-sm-2 control-label">角色权限</label>
-        <div class="col-sm-10">
-         <select name="">
-            @foreach($data as $k=>$v)
-                <option value="{{$v->menu_id}}">{{$v->menu_name}}</option>
-            @endforeach
-         </select>
-        </div>
        </div>
        <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">

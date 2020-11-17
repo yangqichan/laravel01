@@ -2,7 +2,6 @@
 @section('title','后台首页')
 @section('content')
 <!-- Main content -->
-<section class="content">
 <!-- Small boxes (Stat box) -->
 <!-- /.row -->
 <!-- Main row -->
@@ -18,6 +17,7 @@
 <thead>
 <tr>
 <th>管理员名称</th>
+<th>管理员角色</th>
 <th>编辑</th>
 </tr>
 </thead>
@@ -25,7 +25,16 @@
 @foreach($data as $k=>$v)
 <tr>
 <td>{{$v->admin_account}}</td>
-<td><a>删除</a><a>修改</a></td>
+<td>@if($v->role_name)
+		{{$v->role_name}}
+	@else
+	<b style="color:red">此管理员没有添加角色，请尽快添加角色！</b>
+	@endif
+</td>
+<td><button type="button" class="btn btn-danger" ><a href="{{url('/admin/DeleteAdminuser'.$v->admin_id)}}" style="color:#FFFFFF">删除</a></button>
+    <button type="button" class="btn btn-info" ><a href="{{url('/admin/UpdateAdminuser'.$v->admin_id)}}" style="color:#FFFFFF">修改</a></button>
+    <button type="button" class="btn btn-warning"><a href="{{url('/admin/Adminuserrole'.$v->admin_id)}}" style="color:#FFFFFF">添加角色</a></button>
+</td>
 </tr>
 @endforeach
 </tbody>
@@ -38,6 +47,22 @@
 <!-- right col -->
 </div>
 <!-- /.row (main row) -->
-</section>
 <!-- /.content -->
 @endsection
+<script src="/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        	$(".btn-warning").on('click',function(){
+        		var id=$(this).attr('user_id');
+				$.ajax({
+				    url: "/admin/InsertAdminuserrole"+id,
+				    data: {id: 'id'},
+				    type: "POST",
+				    dataType: "json",
+				    success: function(data) {
+				        if(data)
+				    }
+				});
+			});
+        });
+</script>

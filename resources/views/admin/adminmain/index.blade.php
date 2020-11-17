@@ -1,7 +1,5 @@
 @extends('admin.layout.main') @section('title','后台首页') @section('content')
 <!-- 后台首页 -->
-
-
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -735,10 +733,4 @@
         <!-- /.row (main row) -->
     </section>
     <!-- /.content -->
-<<<<<<< HEAD
-  
 @endsection
-=======
-</div>
-@endsection
->>>>>>> 1423c46d3b0b517644522d2450a040a62f58f6fc

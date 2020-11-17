@@ -25,7 +25,9 @@
 @foreach($data as $k=>$v)
 <tr>
 <td>{{$v->menu_name}}</td>
-<td><a>删除</a><a>修改</a></td>
+<td><button type="button" class="btn btn-danger" ><a href="{{url('/admin/DeleteAdminmenu'.$v->admin_id)}}" style="color:#FFFFFF">删除</a></button>
+    <button type="button" class="btn btn-info" ><a href="{{url('/admin/UpdateAdminmenu'.$v->admin_id)}}" style="color:#FFFFFF">修改</a></button>
+</td>
 </tr>
 @endforeach
 </tbody>

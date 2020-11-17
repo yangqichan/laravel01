@@ -18,14 +18,25 @@
 <thead>
 <tr>
 <th>角色名称</th>
+<th>角色权限</th>
 <th>编辑</th>
 </tr>
 </thead>
 <tbody>
 @foreach($data as $k=>$v)
 <tr>
-<td>{{$v->relo_name}}</td>
-<td><a>删除</a><a>修改</a></td>
+<td>{{$v->role_name}}</td>
+<td>@foreach($v->gg as $b=>$e)
+		@foreach($e as $s=>$g)
+		{{$g->menu_name}}
+		@endforeach
+	@endforeach
+	
+</td>
+<td><button type="button" class="btn btn-danger" ><a href="{{url('/admin/DeleteAdminrole'.$v->role_id)}}" style="color:#FFFFFF">删除</a></button>
+    <button type="button" class="btn btn-info" ><a href="{{url('/admin/UpdateAdminrole'.$v->role_id)}}" style="color:#FFFFFF">修改</a></button>
+    <button type="button" class="btn btn-warning"><a href="{{url('/admin/Adminrolemenu'.$v->role_id)}}" style="color:#FFFFFF">添加权限</a></button>
+</td>
 </tr>
 @endforeach
 </tbody>

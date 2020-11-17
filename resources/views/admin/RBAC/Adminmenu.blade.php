@@ -18,8 +18,13 @@
        <div class="form-group">
         <label for="firstname" class="col-sm-2 control-label">菜单名称</label>
         <div class="col-sm-10">
-         <input type="text" class="form-control" id="admin_account" name="admin_account" 
+         <input type="text" class="form-control" id="menu_name" name="menu_name" 
              placeholder="请输入菜单名称">
+        </div>
+        <label for="firstname" class="col-sm-2 control-label">菜单路径</label>
+        <div class="col-sm-10">
+         <input type="text" class="form-control" id="menu_name" name="menu_url" 
+             placeholder="请输入菜单路径">
         </div>
        </div>
        <div class="form-group">

@@ -14,7 +14,8 @@ class Couponcontroller extends Controller
      */
     public function index()
     {
-        //
+        $data=Coupon::get();
+        return view('admin.coupon.index',['data'=>$data]);
     }
 
     /**
@@ -24,6 +25,7 @@ class Couponcontroller extends Controller
      */
     public function create()
     {
+
         return view('admin.coupon.create');
     }
 
@@ -35,7 +37,16 @@ class Couponcontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post=request()->except('_token');
+        //dd($post);
+        $post['start_time']=strtotime($post['start_time']);
+        $post['end_time']=strtotime($post['end_time']);
+        //dd($post);
+        $res=Coupon::create($post);
+        if ($res) {
+            return redirect('coupon');
+        }
+        
     }
 
     /**
@@ -57,7 +68,8 @@ class Couponcontroller extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=Coupon::where('coupon_id',$id)->first();
+        return view('admin.coupon.edit',compact('data'));
     }
 
     /**
@@ -69,7 +81,16 @@ class Couponcontroller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $post=request()->except('_token');
+        //dd($post);
+        $post['start_time']=strtotime($post['start_time']);
+        $post['end_time']=strtotime($post['end_time']);
+        //dd($post);
+        $res=Coupon::where('coupon_id',$id)->update($post);
+        if ($res!==false) {
+            return redirect('coupon');
+        }
+        
     }
 
     /**
@@ -80,6 +101,9 @@ class Couponcontroller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res=Coupon::destroy($id);
+        if ($res) {
+            return json_encode(['code'=>001,'msg'=>"删除成功"]);
+        }
     }
 }

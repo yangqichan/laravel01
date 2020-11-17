@@ -9,6 +9,6 @@ class OperateController extends Controller
 {
     public function operate()
     {
-        echo 111;
+        return view('admin.operate.operate');
     }
 }

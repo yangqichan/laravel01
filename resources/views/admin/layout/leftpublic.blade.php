@@ -11,174 +11,14 @@
                 />
             </div>
             <div class="pull-left info">
-                <p>大狗一号</p>
+                <p>
+                @if(!empty(session('admin')))
+                    {{session('admin')->admin_account}}
+                @endif
+                </p>
                 <a href="#"><i class="fa fa-circle text-success"></i> 线上</a>
             </div>
         </div>
-<<<<<<< HEAD
-        <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
-      </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Layout Options</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="pages/widgets.html">
-            <i class="fa fa-th"></i> <span>Widgets</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="/adminlte/pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="/adminlte/pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="/adminlte/pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="/adminlte/pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>后台管理</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{url('admin/Adminuser')}}"><i class="fa fa-circle-o"></i> 管理员添加</a></li>
-            <li><a href="{{url('admin/ListAdminuser')}}"><i class="fa fa-circle-o"></i> 管理员列表</a></li>
-            <li><a href="{{url('admin/Adminrole')}}"><i class="fa fa-circle-o"></i> 角色添加</a></li>
-            <li><a href="{{url('admin/ListAdminrole')}}"><i class="fa fa-circle-o"></i> 角色列表</a></li>
-            <li><a href="{{url('admin/Adminmenu')}}"><i class="fa fa-circle-o"></i> 权限添加</a></li>
-            <li><a href="{{url('admin/ListAdminmenu')}}"><i class="fa fa-circle-o"></i> 权限列表</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-edit"></i> <span>Forms</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-            <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-table"></i> <span>Tables</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="pages/calendar.html">
-            <i class="fa fa-calendar"></i> <span>Calendar</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="pages/mailbox/mailbox.html">
-            <i class="fa fa-envelope"></i> <span>Mailbox</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
-            </span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-folder"></i> <span>Examples</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-            <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-            <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-            <li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-            <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-            <li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-            <li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-            <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-            <li><a href="pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-=======
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
@@ -197,7 +37,6 @@
                     >
                         <i class="fa fa-search"></i>
                     </button>
->>>>>>> 1423c46d3b0b517644522d2450a040a62f58f6fc
                 </span>
             </div>
         </form>
@@ -205,301 +44,217 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">主要导航</li>
-            <li class="active treeview">
-                <a href="/">
-                    <i class="fa fa-dashboard"></i> <span>首页</span>
-                </a>
+            <li>
+                <a href="/"
+                    ><i class="fa fa-dashboard"></i> <span>首页</span></a
+                >
             </li>
+            @if(session("4"))
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-files-o"></i>
-                    <span>Layout Options</span>
+                    <span>商品品牌</span>
                     <span class="pull-right-container">
-                        <span class="label label-primary pull-right">4</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="pages/layout/top-nav.html"
-                            ><i class="fa fa-circle-o"></i> Top Navigation</a
+                        <a href="/brand/create"
+                            ><i class="fa fa-circle-o"></i> 添加品牌</a
                         >
                     </li>
                     <li>
-                        <a href="pages/layout/boxed.html"
-                            ><i class="fa fa-circle-o"></i> Boxed</a
-                        >
-                    </li>
-                    <li>
-                        <a href="pages/layout/fixed.html"
-                            ><i class="fa fa-circle-o"></i> Fixed</a
-                        >
-                    </li>
-                    <li>
-                        <a href="pages/layout/collapsed-sidebar.html"
-                            ><i class="fa fa-circle-o"></i> Collapsed Sidebar</a
+                        <a href="/brand/index"
+                            ><i class="fa fa-circle-o"></i> 品牌列表</a
                         >
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="pages/widgets.html">
-                    <i class="fa fa-th"></i> <span>Widgets</span>
+            @endif
+            @if(session("3"))
+             <li class="treeview">
+                <a>
+                    <i class="fa fa-pie-chart"></i>
+                    <span>优惠管理</span>
                     <span class="pull-right-container">
-                        <small class="label pull-right bg-green">new</small>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/coupon"><i class="fa fa-circle-o"></i>优惠列表</a>
+                    </li>
+                    <li>
+                        <a href="/coupon/create"><i class="fa fa-circle-o"></i>优惠添加</a>
+                    </li>
+                </ul>
             </li>
+            @endif
+            @if(session("2"))
             <li class="treeview">
                 <a>
                     <i class="fa fa-pie-chart"></i>
-                    <span>商家后台统计模块</span>
+                    <span>后台统计模块</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href=""
-                            ><i class="fa fa-circle-o"></i> 年数据</a
+                        <a href="/operate"
+                            ><i class="fa fa-circle-o"></i> 年,月,周,日数据</a
                         >
                     </li>
                     <li>
                         <a href=""
-                            ><i class="fa fa-circle-o"></i> 月数据</a
-                        >
-                    </li>
-                    <li>
-                        <a href=""
-                            ><i class="fa fa-circle-o"></i> 周数据</a
-                        >
-                    </li>
-                    <li>
-                        <a href=""
-                            ><i class="fa fa-circle-o"></i> 自定义统计</a
+                            ><i class="fa fa-circle-o"></i> 自定义查询</a
                         >
                     </li>
                 </ul>
             </li>
+            @endif
+            @if(session("18"))
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-laptop"></i>
-                    <span>UI Elements</span>
+                    <span>管理员管理</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="pages/UI/general.html"
-                            ><i class="fa fa-circle-o"></i> General</a
+                        <a href="/admin/Adminuser"
+                            ><i class="fa fa-circle-o"></i> 管理员添加</a
                         >
                     </li>
                     <li>
-                        <a href="pages/UI/icons.html"
-                            ><i class="fa fa-circle-o"></i> Icons</a
+                        <a href="/admin/ListAdminuser"
+                            ><i class="fa fa-circle-o"></i> 管理员列表</a
                         >
                     </li>
                     <li>
-                        <a href="pages/UI/buttons.html"
-                            ><i class="fa fa-circle-o"></i> Buttons</a
+                        <a href="/admin/Adminrole"
+                            ><i class="fa fa-circle-o"></i> 角色添加</a
                         >
                     </li>
                     <li>
-                        <a href="pages/UI/sliders.html"
-                            ><i class="fa fa-circle-o"></i> Sliders</a
+                        <a href="/admin/ListAdminrole"
+                            ><i class="fa fa-circle-o"></i> 角色列表</a
                         >
                     </li>
                     <li>
-                        <a href="pages/UI/timeline.html"
-                            ><i class="fa fa-circle-o"></i> Timeline</a
+                        <a href="/admin/Adminmenu"
+                            ><i class="fa fa-circle-o"></i> 菜单添加</a
                         >
                     </li>
                     <li>
-                        <a href="pages/UI/modals.html"
-                            ><i class="fa fa-circle-o"></i> Modals</a
+                        <a href="/admin/ListAdminmenu"
+                            ><i class="fa fa-circle-o"></i> 菜单列表</a
                         >
                     </li>
                 </ul>
             </li>
+            @endif
+            @if(session("1"))   
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-edit"></i> <span>Forms</span>
+                    <i class="fa fa-edit"></i> <span>商品管理</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="pages/forms/general.html"
-                            ><i class="fa fa-circle-o"></i> General Elements</a
+                        <a href="/goods/create"
+                            ><i class="fa fa-circle-o"></i> 商品添加</a
                         >
                     </li>
                     <li>
-                        <a href="pages/forms/advanced.html"
-                            ><i class="fa fa-circle-o"></i> Advanced Elements</a
-                        >
-                    </li>
-                    <li>
-                        <a href="pages/forms/editors.html"
-                            ><i class="fa fa-circle-o"></i> Editors</a
+                        <a href="/goods/index"
+                            ><i class="fa fa-circle-o"></i> 商品列表</a
                         >
                     </li>
                 </ul>
             </li>
+            @endif
+            @if(session("25"))
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-table"></i> <span>Tables</span>
+                    <i class="fa fa-table"></i> <span>广告管理</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="pages/tables/simple.html"
-                            ><i class="fa fa-circle-o"></i> Simple tables</a
+                        <a href="/ad/create"
+                            ><i class="fa fa-circle-o"></i>广告添加</a
                         >
                     </li>
                     <li>
-                        <a href="pages/tables/data.html"
-                            ><i class="fa fa-circle-o"></i> Data tables</a
+                        <a href="/ad"
+                            ><i class="fa fa-circle-o"></i>广告列表</a
+                        >
+                    </li>
+                    <li>
+                        <a href="/position/create"
+                            ><i class="fa fa-circle-o"></i>广告位添加</a
+                        >
+                    </li>
+                    <li>
+                        <a href="/position"
+                            ><i class="fa fa-circle-o"></i>广告位列表</a
                         >
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="pages/calendar.html">
-                    <i class="fa fa-calendar"></i> <span>Calendar</span>
-                    <span class="pull-right-container">
-                        <small class="label pull-right bg-red">3</small>
-                        <small class="label pull-right bg-blue">17</small>
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="pages/mailbox/mailbox.html">
-                    <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                    <span class="pull-right-container">
-                        <small class="label pull-right bg-yellow">12</small>
-                        <small class="label pull-right bg-green">16</small>
-                        <small class="label pull-right bg-red">5</small>
-                    </span>
-                </a>
-            </li>
+            @endif
+            @if(session("15"))
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-folder"></i> <span>Examples</span>
+                    <i class="fa fa-calendar"></i> <span>商品类型</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="pages/examples/invoice.html"
-                            ><i class="fa fa-circle-o"></i> Invoice</a
+                        <a href="/goodstype/create"
+                            ><i class="fa fa-circle-o"></i> 添加类型</a
                         >
                     </li>
                     <li>
-                        <a href="pages/examples/profile.html"
-                            ><i class="fa fa-circle-o"></i> Profile</a
-                        >
-                    </li>
-                    <li>
-                        <a href="pages/examples/login.html"
-                            ><i class="fa fa-circle-o"></i> Login</a
-                        >
-                    </li>
-                    <li>
-                        <a href="pages/examples/register.html"
-                            ><i class="fa fa-circle-o"></i> Register</a
-                        >
-                    </li>
-                    <li>
-                        <a href="pages/examples/lockscreen.html"
-                            ><i class="fa fa-circle-o"></i> Lockscreen</a
-                        >
-                    </li>
-                    <li>
-                        <a href="pages/examples/404.html"
-                            ><i class="fa fa-circle-o"></i> 404 Error</a
-                        >
-                    </li>
-                    <li>
-                        <a href="pages/examples/500.html"
-                            ><i class="fa fa-circle-o"></i> 500 Error</a
-                        >
-                    </li>
-                    <li>
-                        <a href="pages/examples/blank.html"
-                            ><i class="fa fa-circle-o"></i> Blank Page</a
-                        >
-                    </li>
-                    <li>
-                        <a href="pages/examples/pace.html"
-                            ><i class="fa fa-circle-o"></i> Pace Page</a
+                        <a href="/goodstype/index"
+                            ><i class="fa fa-circle-o"></i> 类型列表</a
                         >
                     </li>
                 </ul>
             </li>
+            @endif
+            @if(session("12"))
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-share"></i> <span>Multilevel</span>
+                    <i class="fa fa-envelope"></i> <span>商品分类</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="#"><i class="fa fa-circle-o"></i> Level One</a>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"
-                            ><i class="fa fa-circle-o"></i> Level One
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li>
-                                <a href="#"
-                                    ><i class="fa fa-circle-o"></i> Level Two</a
-                                >
-                            </li>
-                            <li class="treeview">
-                                <a href="#"
-                                    ><i class="fa fa-circle-o"></i> Level Two
-                                    <span class="pull-right-container">
-                                        <i
-                                            class="fa fa-angle-left pull-right"
-                                        ></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li>
-                                        <a href="#"
-                                            ><i class="fa fa-circle-o"></i>
-                                            Level Three</a
-                                        >
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            ><i class="fa fa-circle-o"></i>
-                                            Level Three</a
-                                        >
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <a href="/category/create"
+                            ><i class="fa fa-circle-o"></i> 添加分类</a
+                        >
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-circle-o"></i> Level One</a>
+                        <a href="/category/index"
+                            ><i class="fa fa-circle-o"></i> 分类列表</a
+                        >
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="https://adminlte.io/docs"
-                    ><i class="fa fa-book"></i> <span>文献资料</span></a
-                >
-            </li>
+            @endif
             <li class="header">标签</li>
             <li>
                 <a href=""

@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    protected $table='role';
-	protected $primaryKey='role_id';
-	public $timestamps=false;
-	protected $guaarded=[];
+	// 声明表名
+    protected $table = "role";
+    // 声明主键 
+    protected $primaryKey = "role_id";
+    // 时间戳管理
+    public $timestamps = false;
+    // 黑名单
+    protected $guarded = [];
 }
