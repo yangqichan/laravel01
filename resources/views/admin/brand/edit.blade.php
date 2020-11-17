@@ -14,8 +14,18 @@
                     <div class="box-body">
                     </div>
                     <div class="box-footer clearfix">
+                        @if ($errors->any())
+                        <div style="padding-bottom: 20px; padding-left: 30px; background-color: pink">
+                            <ul>
+                            @foreach ($errors->all() as $error)
+                                <li style="color:#ff0000; padding-top: 10px;">{{ $error }}</li>
+                            @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         <form class="form-horizontal" role="form"  action="{{url('/brand/update/'.$brand->brand_id)}}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
+                            <input type="hidden" name="brand_id" value="{{$brand->brand_id}}">
                             <label for="firstname" class="col-sm-2 control-label">品牌名称</label>
                             <div class="col-sm-10">
                             <input type="text" class="form-control" name="brand_name" id="firstname" 

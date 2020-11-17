@@ -12,6 +12,7 @@ use App\Models\Goods;
 use App\Models\Goodsattr;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB; 
+use Illuminate\Validation\Rule;
 
 class GoodsController extends Controller
 {
@@ -71,6 +72,20 @@ class GoodsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'goods_name' => 'required|unique:goods',
+            'goods_price' => 'required',
+            'num' => 'required',
+            'cate_id' => 'required',
+            'brand_id' => 'required',
+        ],[
+            'goods_name.required'=>'商品名称不能为空',
+            'goods_name.unique'=>'商品名称已存在',
+            'goods_price.required'=>'商品价格不能为空',
+            'num.required'=>'商品数量不能为空',
+            'cate_id.required'=>'商品分类不能为空',
+            'brand_id.required'=>'商品品牌不能为空',
+        ]);
         DB::beginTransaction();
         try{
             $attr_price_list = $request->attr_price_list;
@@ -101,7 +116,7 @@ class GoodsController extends Controller
             $goods_id = Goods::insertGetId($data);
             // dd($goods_id);
             if(!empty($goods_id)){
-                if(count($attr_id_list)>0){
+                if(!empty($attr_id_list)){
                     $arr = [];
                     for($i=0;$i<count($attr_id_list);$i++){
                         $arr[]=[
@@ -124,7 +139,7 @@ class GoodsController extends Controller
                     $goods = Goods::where('goods_id',$goods_id)->first(['goods_name','goods_sn','goods_id']);
                     DB::commit();
                     return view('admin.goods.product',['new_goods_specs'=>$new_goods_specs,'goods'=>$goods]);
-                }                
+                }              
                 return redirect('/goods/index');
             }
         }catch(Exception $e){
@@ -211,6 +226,24 @@ class GoodsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'goods_name' =>
+                [
+                    'required',
+                    Rule::unique('goods')->ignore(request()->goods_id,'goods_id')
+                ],
+            'goods_price' => 'required',
+            'num' => 'required',
+            'cate_id' => 'required',
+            'brand_id' => 'required',
+        ],[
+            'goods_name.required'=>'商品名称不能为空',
+            'goods_name.unique'=>'商品名称已存在',
+            'goods_price.required'=>'商品价格不能为空',
+            'num.required'=>'商品数量不能为空',
+            'cate_id.required'=>'商品分类不能为空',
+            'brand_id.required'=>'商品品牌不能为空',
+        ]);
         $data = $request->except(['_token','attr_price_list','attr_value_list','attr_id_list','type_id']);
         if(empty($goods_sn)){
             $data['goods_sn'] = 'SHOP'.time().rand(0000,9999);

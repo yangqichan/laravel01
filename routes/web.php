@@ -149,23 +149,21 @@ Route::domain('admin.yqc.ink')->group(function(){
         });
         //商品类型
         Route::prefix('goodstype')->group(function(){
-            Route::get('/create',[GoodstypeController::class, 'create'])->name('goodstype.create');
-            Route::post('/store',[GoodstypeController::class, 'store'])->name('goodstype.store');
-            Route::get('/index',[GoodstypeController::class, 'index'])->name('goodstype.index');
-            Route::any('/del/{id}',[GoodstypeController::class, 'destroy'])->name('goodstype.del');//没写
-            Route::any('/edit/{id}',[GoodstypeController::class, 'edit'])->name('goodstype.edit');//没写
-            Route::any('/update/{id}',[GoodstypeController::class, 'update'])->name('goodstype.update');//没写
+            Route::get('/create',[GoodstypeController::class, 'create'])->name('type.create');
+            Route::post('/store',[GoodstypeController::class, 'store'])->name('type.store');
+            Route::get('/index',[GoodstypeController::class, 'index'])->name('type.index');
+            Route::any('/del/{id}',[GoodstypeController::class, 'destroy'])->name('type.del');
+            Route::any('/edit/{id}',[GoodstypeController::class, 'edit'])->name('type.edit');
+            Route::any('/update/{id}',[GoodstypeController::class, 'update'])->name('type.update');
         });
         //商品属性
         Route::prefix('goodsattr')->group(function(){
-            Route::get('/create/{type_id}',[GoodsattrController::class, 'create'])->name('goodsattr.create');
-            Route::post('/store',[GoodsattrController::class, 'store'])->name('goodsattr.store');
-            Route::get('/index/{type_id}',[GoodsattrController::class, 'index'])->name('goodsattr.index');
-            Route::any('/del/{id}',[GoodsattrController::class, 'destroy'])->name('goodsattr.del');//没写
-            Route::any('/edit/{id}',[GoodsattrController::class, 'edit'])->name('goodsattr.edit');//没写
-            Route::any('/update/{id}',[GoodsattrController::class, 'update'])->name('goodsattr.update');//没写
+            Route::get('/create/{type_id}',[GoodsattrController::class, 'create'])->name('attr.create');
+            Route::post('/store',[GoodsattrController::class, 'store'])->name('sattr.store');
+            Route::get('/index/{type_id}',[GoodsattrController::class, 'index'])->name('attr.index');
+            Route::any('/del/{id}',[GoodsattrController::class, 'destroy'])->name('attr.del');
+            Route::any('/edit/{id}',[GoodsattrController::class, 'edit'])->name('attr.edit');
+            Route::any('/update/{id}',[GoodsattrController::class, 'update'])->name('attr.update');
         });
-  
-
 });
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Brand;
+use Illuminate\Validation\Rule;
 
 class BrandController extends Controller
 {
@@ -15,8 +16,15 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brand = Brand::where('is_del',0)->get();
-        return view('admin.brand.index',['brand'=>$brand]);
+        $brand_name = request()->brand_name;
+        $where=[];
+        if($brand_name){
+            $where[]=[
+                'brand_name','like',"%$brand_name%"
+            ];
+        }
+        $brand = Brand::where('is_del',0)->where($where)->paginate(5);
+        return view('admin.brand.index',['brand'=>$brand,'brand_name'=>$brand_name]);
     }
 
     /**
@@ -37,6 +45,12 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'brand_name' => 'required|unique:brand',
+        ],[
+            'brand_name.required'=>"品牌名称不能为空",
+            'brand_name.unique'=>"品牌名称已存在",
+        ]);
         $brand_name = request()->brand_name;
         $brand_desc = request()->brand_desc;
         $brand_url = request()->brand_url;
@@ -88,6 +102,16 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'brand_name' =>
+                [
+                    'required',
+                    Rule::unique('brand')->ignore(request()->brand_id,'brand_id')
+                ],
+        ],[
+            'brand_name.required'=>'品牌名称不能为空',
+            'brand_name.unique'=>'品牌名称已存在',
+        ]);
         $data=$request->except('_token');
         if ($request->hasFile('brand_logo') && $request->file('brand_logo')->isValid()) {
             $file = $request->brand_logo;

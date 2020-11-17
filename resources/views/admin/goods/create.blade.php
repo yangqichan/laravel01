@@ -5,7 +5,7 @@
   <script type="text/javascript" charset="utf-8" src="/futext/ueditor.all.min.js"> </script>
   <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
   <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
-  <script type="text/javascript" charset="utf-8" src="/futext/zh-cn.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/futext/lang/zh-cn/zh-cn.js"></script>
 
     <!-- Main content -->
     <section class="content">
@@ -19,7 +19,16 @@
                 <div class="box box-info">
                     <div class="box-body">
                     </div>
-                    <form class="form-horizontal" role="form"  action="{{url('/goods/store')}}" method="post" enctype="multipart/form-data">
+                    @if ($errors->any())
+                      <div style="padding-bottom: 20px; padding-left: 30px; background-color: pink">
+                        <ul>
+                          @foreach ($errors->all() as $error)
+                            <li style="color:#ff0000; padding-top: 10px;">{{ $error }}</li>
+                          @endforeach
+                        </ul>
+                      </div>
+                    @endif
+                    <form class="form-horizontal" role="form" name="addgoods"  action="{{url('/goods/store')}}" method="post" enctype="multipart/form-data">
                     <nav class="navbar navbar-default" role="navigation">
                     <div>
                         <!-- 导航 -->
@@ -44,29 +53,32 @@
                                     <div class="form-group">
                                         <label for="firstname" class="col-sm-2 control-label">商品名称</label>
                                         <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="goods_name" id="firstname" 
+                                        <input type="text" class="form-control" name="goods_name"
                                             placeholder="请输入商品名称">
+                                            <span style="color:red;size:14px;" id="span_gname"></span>
                                         </div>
                                     </div>
         
                                     <div class="form-group">
                                         <label for="firstname" class="col-sm-2 control-label">商品价格</label>
                                         <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="goods_price" id="firstname" 
+                                        <input type="text" class="form-control" name="goods_price" 
                                             placeholder="请输入商品价格">
+                                            <span style="color:red;size:14px;" id="span_gprice"></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="firstname" class="col-sm-2 control-label">商品库存</label>
                                         <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="num" id="firstname" 
+                                        <input type="text" class="form-control" name="num" 
                                             placeholder="请输入商品库存">
+                                            <span style="color:red;size:14px;" id="span_gnum"></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="firstname" class="col-sm-2 control-label">商品货号</label>
                                         <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="goods_sn" id="firstname" 
+                                        <input type="text" class="form-control" name="goods_sn"
                                             placeholder="请输入商品货号">
                                         </div>
                                     </div>
@@ -85,7 +97,7 @@
                                     <div class="form-group">
                                         <label for="firstname" class="col-sm-2 control-label">所属品牌</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="brand_id" id="firstname">
+                                            <select class="form-control" name="brand_id">
                                                 <option value="">请选择</option>
                                                 @foreach($brand as $k=>$v)
                                                 <option value="{{$v->brand_id}}">{{$v->brand_name}}</option>
@@ -118,7 +130,6 @@
                                         <input type="radio" name="is_hot" value="1">否
                                         </div>
                                     </div>
-                                    
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="profile">
@@ -157,7 +168,7 @@
     <!-- /.content -->
 <script src="/static/jquery.min.js"></script>
   <script>
-
+//商品类型
 $(document).on('change','#goods_type',function(){
     var type_id = $(this).val();
     // alert(type_id);
