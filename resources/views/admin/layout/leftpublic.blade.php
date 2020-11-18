@@ -95,7 +95,7 @@
             <li class="treeview">
                 <a>
                     <i class="fa fa-pie-chart"></i>
-                    <span>后台统计模块</span>
+                    <span>后台统计</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>

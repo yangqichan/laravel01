@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\AdministratorController; // RBAC
 use App\Http\Controllers\Admin\Couponcontroller;        // 优惠模块
 use App\Http\Controllers\Admin\AdController;            //广告模块
 use App\Http\Controllers\Admin\PositionController;      //广告位模块
+
+use App\Http\Controllers\index\CategorylistController;      //商品分类列表
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +30,11 @@ Route::domain('laravel01.yqc.ink')->group(function(){
     Route::view('/', 'index.indexmain.index');                        // 前台首页
     Route::view('/login', 'index.rl.login');                          // 前台登录
     Route::view('/reg', 'index.rl.reg');                     // 前台注册
+
+    //商品分类列表（点击分类跳转）
+	Route::prefix('category')->group(function(){
+		Route::any('/categorylist',[CategorylistController::class,'categorylist']);
+	});    
 });
 //后台模块
 Route::domain('admin.yqc.ink')->group(function(){

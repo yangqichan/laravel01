@@ -38,7 +38,7 @@ class LoginController extends Controller
                         $id=$value->menu_id;
                         session([$id=>$id]);
                     }                    
-                    //dd(session(3));
+                    //dd(session("25"));
                     //dd(session('id'));
                 }
                 // 验证通过重定向
