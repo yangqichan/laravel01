@@ -5,23 +5,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="/indexyh/css/style.css" />
     <!--[if IE 6]>
-    <script src="js/iepng.js" type="text/javascript"></script>
+    <script src="/indexyh/js/iepng.js" type="text/javascript"></script>
         <script type="text/javascript">
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
     <![endif]-->
-     <link rel="stylesheet" type="text/css" href="/indexyh/css/webbase.css" />
+    <!-- <link type="text/css" rel="stylesheet" href="/indexyh/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/indexyh/css/pages-list.css" />
-    <link rel="stylesheet" type="text/css" href="/indexyh/css/widget-cartPanelView.css" />
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>    
+    <link rel="stylesheet" type="text/css" href="/indexyh/css/widget-cartPanelView .css" /> -->
+
+
+    <script type="text/javascript" src="/indexyh/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="/indexyh/js/menu.js"></script>    
             
-	<script type="text/javascript" src="js/lrscroll_1.js"></script>
+	<script type="text/javascript" src="/indexyh/js/lrscroll_1.js"></script>
     
     
-	<script type="text/javascript" src="js/n_nav.js"></script>
+	<script type="text/javascript" src="/indexyh/js/n_nav.js"></script>
     
 <title>尤洪</title>
 </head>
@@ -469,16 +471,15 @@
             <td width="70">&nbsp; 品牌：</td>
             <td class="td_a">@foreach($brand_name as $k=>$v)
                                 <input type="hidden" value="{{$v->brand_id}}" field="brand_id">
-                                <a href="#" value="{{$v->brand_id}}" field="brand_id" @if(isset($query['brand_id']) && $query['brand_id']==$v->brand_id)  class="redhover" @endif>{{$v->brand_name}}</a><!-- class="now" -->
+                                <a href="#" id="field"  value="{{$v->brand_id}}" field="brand_id" @if(isset($query['brand_id']) && $query['brand_id']==$v->brand_id)  class="now" @endif>{{$v->brand_name}}</a><!-- class="now" -->
                             @endforeach</td>
           </tr>
-          <tr valign="top">
+          <tr valign="top" javascript >
             <td>&nbsp; 价格：</td>                                                                                                       
             <td class="td_a">@foreach($money as $k=>$v)
                                 <input type="hidden" value="{{$v}}" field="goods_price">
-                                <a href="#" value="{{$v}}" field="goods_price" >{{$v}}</a>
-                                
-                            @endforeach
+                                <a href="#" id="field" value="{{$v}}" field="goods_price" @if(isset($query['goods_price']) && $query['goods_price']== $v ) class="now" @endif >{{$v}}</a>
+                              @endforeach
                 </td>
           </tr>                                                                  
         </table>                                                                                 
@@ -499,55 +500,34 @@
                     	<font>￥<span>368.00</span></font> &nbsp; 18R
                     </div>
                 </li>
-                <li>
-                    <div class="img"><a href="#"><img src="/indexyh/images/his_2.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>768.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="/indexyh/images/his_3.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>680.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="/indexyh/images/his_4.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>368.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="/indexyh/images/his_5.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>368.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
         	</ul>
         </div>
         <div class="l_list">
         	<div class="list_t">
             	<span class="fl list_or">
-                	<a href="#" class="now">默认</a>
-                    <a href="#">
-                    	<span class="fl">销量</span>                        
+                    <input type="hidden" value="{{$v}}" field="">
+                	<a href="#" class="now" id="field" field="">
+                        <span >默认</span>
+                    </a>
+                    <a href="#" id="field" field="order">
+                    	<span class="fl" >销量</span>                        
                         <span class="i_up">销量从低到高显示</span>
                         <span class="i_down">销量从高到低显示</span>                                                     
                     </a>
-                    <a href="#">
-                    	<span class="fl">价格</span>                        
+                    <input type="hidden" value="goods_price_max" field="goods_price_max">
+                    <a href="#" id="field" field="goods_price_max" >
+                    	<span class="fl" >价格</span>                        
                         <span class="i_up">价格从低到高显示</span>
                         <span class="i_down">价格从高到低显示</span>     
                     </a>
-                    <a href="#">新品</a>
+                    <input type="hidden" value="add_time" field="add_time">
+                    <a href="#" id="field" field="add_time">
+                        <span >新品</span>
+                    </a>
                 </span>
                 <span class="fr">共发现{{$count}}件商品</span>
             </div>
-            <div class="list_c">
+            <div class="list_c" id="ajaxlist">
             	
                 <ul class="cate_list">
                     @foreach($data as $k=>$v)
@@ -566,9 +546,9 @@
                 </ul>
                 
                 <div class="pages">
-                	<a href="#" class="p_pre">上一页</a><a href="#" class="cur">1</a><a href="#">2</a><a href="#">3</a>...<a href="#">20</a><a href="#" class="p_pre">下一页</a>
+                    <span href="#" class="p_pre">{{$data->links('vendor.pagination.simple-bootstrap-4')}}</span>
+                   
                 </div>
-                
                 
                 
             </div>
@@ -670,22 +650,47 @@
  <script src="/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-            $(".mar_10 a").on('click',function(){
-                $(this).siblings().removeClass('redhover');
-                $(this).addClass('redhover');
+            $(document).on('click','#field',function(){
+                $(this).siblings().removeClass('now');
+                $(this).addClass('now');
                 var search='';
-                $(".redhover").each(function(i,k){
+                $(".now").each(function(i,k){
                     var s_key=$(this).prev().val();
                     var s_val=$(this).prev().attr('field');
                     //alert(s_key);
                     search += s_val+'='+s_key+'&';
                 });
                 //alert(search);
-                var url="{{$url}}";
-                if(search){
-                    url += '?' +search.substring(0,search.length-1);//将最后那个&去掉
-                    location.href=url;
-                }
+                var url="{{$url}}";//将最后那个&去掉
+                $.ajax({
+                    url: url+= '?' +search.substring(0,search.length-1),
+                    data: {},
+                    type: "get",
+                    dataType: "text",
+                    success: function(data) {
+
+                        $("#ajaxlist").html(data);
+                    }
+                });
             });
+            // $(document).on('click','#field',function(){
+            //     $(this).siblings().removeClass();
+            //     $(this).addClass('now');
+            //     var field=$(this).attr("field");
+            //     if(field == ""){
+            //         location.href="{{$url}}";
+            //     }
+            //     alert(field);
+            //     $.ajax({
+            //         url: "/category/categorylist",
+            //         data: { field :field},
+            //         type: "get",
+            //         dataType: "text",
+            //         success: function(data) {
+
+            //             $("#ajaxlist").html(data);
+            //         }
+            //     });
+            // });
         });
 </script>

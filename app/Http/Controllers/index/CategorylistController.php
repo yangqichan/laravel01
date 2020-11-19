@@ -13,12 +13,13 @@ class CategorylistController extends Controller
     //商品列表页面（点击搜索后的页面）
     public function categorylist(Request $request){
         $query=$request->all();
+        $cate_id=8; //$request->cate_id;
         $where=[];
         if(isset($query['goods_price'])){
             $goods_price=explode('元',$query['goods_price']);//字符串切割成数组切成2块
             $goods_price=explode('-', $goods_price[0]);
             $where[]=['goods_price','>',$goods_price[0]];
-            if($goods_price[1]){
+            if(isset($goods_price[1])){
                 $where[]=['goods_price','<',$goods_price[1]];
             }
         }
@@ -28,8 +29,28 @@ class CategorylistController extends Controller
         if(isset($request->cate_id)){
             $where[]=['cate_id','=',$cate_id];
         }
-        $cate_id=8; //$request->cate_id;
-        $data=Goods::where($where)->get();
+        
+        if(isset($query['goods_price_max']) == 'goods_price_max'){
+            $data=Goods::where($where)->orderby('goods_price','desc')->paginate(2);
+            //ajax无刷新
+            return view('index.category.ajaxcategory',['data'=>$data]);
+        }
+        if(isset($query['field']) == 'add_time'){
+            $data=Goods::where($where)->orderby('add_time','desc')->paginate(2);
+            //ajax无刷新
+            return view('index.category.ajaxcategory',['data'=>$data]);
+        }
+        if(isset($query['goods_price'])){
+            $data=Goods::where($where)->paginate(2);
+            //ajax无刷新
+            return view('index.category.ajaxcategory',['data'=>$data]);
+        }
+        if(isset($query['brand_id'])){
+            $data=Goods::where($where)->paginate(2);
+            //ajax无刷新
+            return view('index.category.ajaxcategory',['data'=>$data]);
+        }
+        $data=Goods::where($where)->paginate(2);
         $count=Goods::where($where)->count();
         $money=Goods::where('cate_id',$cate_id)->max('goods_price');
         $money=$this->money($money);

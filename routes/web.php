@@ -90,7 +90,7 @@ Route::domain('admin.yqc.ink')->group(function(){
 	});
 
         //优惠模块
-        Route::prefix('coupon')->group(function(){
+        Route::middleware('Admin')->prefix('coupon')->group(function(){
         Route::any('create', [Couponcontroller::class, 'create'])->name('coupon.create');  //优惠添加
         Route::any('store', [Couponcontroller::class, 'store'])->name('coupon.store');  //优惠执行添加
         Route::any('/', [Couponcontroller::class, 'index'])->name('coupon.index');         //优惠展示
@@ -99,12 +99,12 @@ Route::domain('admin.yqc.ink')->group(function(){
         Route::any('update/{id}', [Couponcontroller::class, 'update'])->name('coupon.update');  //优惠修改
          });
         // 运营模块
-        Route::prefix('operate')->group(function(){
+        Route::middleware('Admin')->prefix('operate')->group(function(){
             Route::any('/',[OperateController::class , 'operate'])->name('operate');
         });
 
         //广告模块
-        Route::prefix('ad')->group(function(){
+        Route::middleware('Admin')->prefix('ad')->group(function(){
             Route::any('/',[AdController::class , 'index'])->name('ad');                   //广告展示
             Route::any('create',[AdController::class , 'create'])->name('ad.create');      //广告添加
             Route::any('store',[AdController::class , 'store'])->name('ad.store');         //广告执行添加
@@ -114,7 +114,7 @@ Route::domain('admin.yqc.ink')->group(function(){
         });
 
         //广告位模块
-        Route::prefix('position')->group(function(){
+        Route::middleware('Admin')->prefix('position')->group(function(){
             Route::any('/',[PositionController::class , 'index'])->name('position');              //广告位展示
             Route::any('create',[PositionController::class , 'create'])->name('position.create'); //广告位添加
             Route::any('store',[PositionController::class , 'store'])->name('position.store');    //广告位执行添加
@@ -126,7 +126,7 @@ Route::domain('admin.yqc.ink')->group(function(){
     });
 
         //品牌
-        Route::prefix('brand')->group(function(){
+        Route::middleware('Admin')->prefix('brand')->group(function(){
             Route::get('/create',[BrandController::class, 'create'])->name('brand.create');
             Route::post('/store',[BrandController::class, 'store'])->name('brand.store');
             Route::get('/index',[BrandController::class, 'index'])->name('brand.index');
@@ -135,7 +135,7 @@ Route::domain('admin.yqc.ink')->group(function(){
             Route::any('/update/{id}',[BrandController::class, 'update'])->name('brand.update');
         });
         //分类
-        Route::prefix('category')->group(function(){
+        Route::middleware('Admin')->prefix('category')->group(function(){
             Route::get('/create',[CategoryController::class, 'create'])->name('category.create');
             Route::post('/store',[CategoryController::class, 'store'])->name('category.store');
             Route::get('/index',[CategoryController::class, 'index'])->name('category.index');
@@ -144,7 +144,7 @@ Route::domain('admin.yqc.ink')->group(function(){
             Route::any('/update/{id}',[CategoryController::class, 'update'])->name('category.update');
         });
         //商品
-        Route::prefix('goods')->group(function(){
+        Route::middleware('Admin')->prefix('goods')->group(function(){
             Route::get('/create',[GoodsController::class, 'create'])->name('goods.create');
             Route::post('/store',[GoodsController::class, 'store'])->name('goods.store');
             Route::get('/index',[GoodsController::class, 'index'])->name('goods.index');
@@ -155,7 +155,7 @@ Route::domain('admin.yqc.ink')->group(function(){
             Route::any('/update/{id}',[GoodsController::class, 'update'])->name('goods.update');
         });
         //商品类型
-        Route::prefix('goodstype')->group(function(){
+        Route::middleware('Admin')->prefix('goodstype')->group(function(){
             Route::get('/create',[GoodstypeController::class, 'create'])->name('type.create');
             Route::post('/store',[GoodstypeController::class, 'store'])->name('type.store');
             Route::get('/index',[GoodstypeController::class, 'index'])->name('type.index');
@@ -164,7 +164,7 @@ Route::domain('admin.yqc.ink')->group(function(){
             Route::any('/update/{id}',[GoodstypeController::class, 'update'])->name('type.update');
         });
         //商品属性
-        Route::prefix('goodsattr')->group(function(){
+        Route::middleware('Admin')->prefix('goodsattr')->group(function(){
             Route::get('/create/{type_id}',[GoodsattrController::class, 'create'])->name('attr.create');
             Route::post('/store',[GoodsattrController::class, 'store'])->name('sattr.store');
             Route::get('/index/{type_id}',[GoodsattrController::class, 'index'])->name('attr.index');
